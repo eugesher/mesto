@@ -1,8 +1,4 @@
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   width: 68.9%;
   margin-top: 45px;
-  height: 74px;
 }
