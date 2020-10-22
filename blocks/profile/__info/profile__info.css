@@ -1,0 +1,9 @@
+.profile__info {
+  display: grid;
+  grid-template:
+      "n e" min-content
+      "a a" min-content;
+  row-gap: 5px;
+  margin-top: 18px;
+  margin-left: 30px;
+}
