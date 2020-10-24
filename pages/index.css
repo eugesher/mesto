@@ -13,7 +13,7 @@
 @import url("../blocks/profile/__about/profile__about.css");
 @import url("../blocks/profile/__add-button/profile__add-button.css");
 @import url("../blocks/places/places.css");
-@import url("../blocks/places/__list/places__list.css");
+@import url("../blocks/places/__list/places__card-list.css");
 @import url("../blocks/places/__card/places__card.css");
-@import url("../blocks/places/__image/places__image.css");
-@import url("../blocks/places/__titling/places__titling.css");
+@import url("../blocks/places/__card-image/places__card-image.css");
+@import url("../blocks/places/__card-title/places__card-title.css");
