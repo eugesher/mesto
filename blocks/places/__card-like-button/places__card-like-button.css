@@ -8,3 +8,8 @@
   border: 0;
   background-color: rgba(0, 0, 0, 0);
 }
+
+.places__card-like-button:hover {
+  cursor: pointer;
+  opacity: .6;
+}
