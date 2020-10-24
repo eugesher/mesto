@@ -1,3 +1,7 @@
 #TODO
 
-hover
+flex-shrink  
+button types  
+form type  
+like hover  
+profile text overflow
