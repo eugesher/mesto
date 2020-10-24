@@ -1,0 +1,11 @@
+.popup__edit-form {
+  width: 430px;
+  min-height: 330px;
+  background-color: #fff;
+  border-radius: 10px;
+  color: #000;
+  box-sizing: border-box;
+  padding-left: 36px;
+  padding-top: 34px;
+  padding-right: 36px;
+}
