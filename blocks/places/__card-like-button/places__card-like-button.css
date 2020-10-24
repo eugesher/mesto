@@ -1,0 +1,10 @@
+.places__card-like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min-content;
+  height: min-content;
+  padding: 0;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
