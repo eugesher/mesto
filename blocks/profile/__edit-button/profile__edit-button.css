@@ -10,3 +10,7 @@
   align-self: end;
   margin: 0 0 12px 20px;
 }
+
+.profile__edit-button:hover {
+  opacity: .6;
+}
