@@ -5,3 +5,9 @@
   align-items: center;
   overflow: visible;
 }
+
+@media screen and (max-width: 639px) {
+  .places {
+    margin-top: 36px;
+  }
+}

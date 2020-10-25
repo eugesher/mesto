@@ -10,10 +10,19 @@
   border: 1px solid #fff;
   padding: 0;
   align-self: end;
-  margin: 0 0 12px 20px;
+  margin: 0 0 12px 0;
 }
 
 .profile__edit-button:hover {
   cursor: pointer;
   opacity: .6;
+}
+
+@media screen and (max-width: 639px) {
+  .profile__edit-button {
+    align-self: center;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+  }
 }

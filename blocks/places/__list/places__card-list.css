@@ -7,3 +7,23 @@
   grid-template-rows: repeat(2, 362px);
   gap: 20px 18px;
 }
+
+@media screen and (max-width: 1279px) {
+  .places__card-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .places__card-list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 362px);
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .places__card-list {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 362px);
+  }
+}
