@@ -15,7 +15,7 @@
 @import url("../blocks/profile/__add-button-image/profile__add-button-image.css");
 @import url("../blocks/places/places.css");
 @import url("../blocks/places/__grid/places__grid.css");
-@import url("../blocks/card/places__card.css");
+@import url("../blocks/card/card.css");
 @import url("../blocks/card/__image/card__image.css");
 @import url("../blocks/card/__title-container/card__title-container.css");
 @import url("../blocks/card/__title/card__title.css");
