@@ -1,4 +1,4 @@
-.places__card-list {
+.places__grid {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -9,20 +9,20 @@
 }
 
 @media screen and (max-width: 1279px) {
-  .places__card-list {
+  .places__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media screen and (max-width: 1023px) {
-  .places__card-list {
+  .places__grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 362px);
   }
 }
 
 @media screen and (max-width: 639px) {
-  .places__card-list {
+  .places__grid {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(6, 362px);
   }
