@@ -22,6 +22,7 @@ function closePopup() {
 
 function submitProfileEditForm(evt) {
   evt.preventDefault();
+
   let nameInput = popupInputProfileName.value;
   let aboutInput = popupInputProfileAbout.value;
 
