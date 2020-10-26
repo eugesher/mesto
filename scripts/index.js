@@ -33,9 +33,6 @@ function submitProfileEditForm(evt) {
 }
 
 
-popupInputProfileName.setAttribute('value', profileName.textContent);
-popupInputProfileAbout.setAttribute('value', profileAbout.textContent);
-
 profileEditButton.addEventListener('click', openPopup);
 popupCloseButton.addEventListener('click', closePopup);
 popupProfileEditForm.addEventListener('submit', submitProfileEditForm);
