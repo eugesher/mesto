@@ -1,9 +1,0 @@
-.popup__input_content_profile-name {
-  margin-top: 42px;
-}
-
-@media screen and (max-width: 639px) {
-  .popup__input_content_profile-name {
-    margin-top: 69px;
-  }
-}

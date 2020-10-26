@@ -9,4 +9,15 @@
   border-right: 0;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   padding: 8px 0;
+  margin-top: 24px;
+}
+
+.popup__input:first-of-type {
+  margin-top: 42px;
+}
+
+@media screen and (max-width: 639px) {
+  .popup__input:first-of-type {
+    margin-top: 69px;
+  }
 }
