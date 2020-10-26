@@ -10,14 +10,14 @@ let profileName = profileInfo.querySelector('.profile__name');
 let profileAbout = profileInfo.querySelector('.profile__about');
 
 
-function openPopup() {
-  popupInputProfileName.value = profileName.textContent;
-  popupInputProfileAbout.value = profileAbout.textContent;
-  popup.classList.add('popup_opened');
-}
-
-function closePopup() {
-  popup.classList.remove('popup_opened');
+function togglePopup() {
+  if (popup.classList.contains('popup_opened')) {
+    popup.classList.remove('popup_opened');
+  } else {
+    popupInputProfileName.value = profileName.textContent;
+    popupInputProfileAbout.value = profileAbout.textContent;
+    popup.classList.add('popup_opened');
+  }
 }
 
 function submitProfileEditForm(evt) {
@@ -29,10 +29,10 @@ function submitProfileEditForm(evt) {
   profileName.textContent = nameInput;
   profileAbout.textContent = aboutInput;
 
-  closePopup();
+  togglePopup();
 }
 
 
-profileEditButton.addEventListener('click', openPopup);
-popupCloseButton.addEventListener('click', closePopup);
+profileEditButton.addEventListener('click', togglePopup);
+popupCloseButton.addEventListener('click', togglePopup);
 popupProfileEditForm.addEventListener('submit', submitProfileEditForm);
