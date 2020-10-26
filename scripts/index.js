@@ -23,11 +23,8 @@ function togglePopup() {
 function submitProfileEditForm(evt) {
   evt.preventDefault();
 
-  let nameInput = popupInputProfileName.value;
-  let aboutInput = popupInputProfileAbout.value;
-
-  profileName.textContent = nameInput;
-  profileAbout.textContent = aboutInput;
+  profileName.textContent = popupInputProfileName.value;
+  profileAbout.textContent = popupInputProfileAbout.value;
 
   togglePopup();
 }
