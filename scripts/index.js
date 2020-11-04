@@ -1,13 +1,40 @@
-let popup = document.querySelector('.popup');
-let popupProfileEditForm = popup.querySelector('.popup__container')
-let popupCloseButton = popupProfileEditForm.querySelector('.popup__close-button');
-let popupInputProfileName = popupProfileEditForm.querySelector('.popup__input_content_profile-name');
-let popupInputProfileAbout = popupProfileEditForm.querySelector('.popup__input_content_profile-about');
+const popup = document.querySelector('.popup');
+const popupProfileEditForm = popup.querySelector('.popup__container')
+const popupCloseButton = popupProfileEditForm.querySelector('.popup__close-button');
+const popupInputProfileName = popupProfileEditForm.querySelector('.popup__input_content_profile-name');
+const popupInputProfileAbout = popupProfileEditForm.querySelector('.popup__input_content_profile-about');
 
-let profileInfo = document.querySelector('.profile__info');
-let profileEditButton = profileInfo.querySelector('.profile__edit-button');
-let profileName = profileInfo.querySelector('.profile__name');
-let profileAbout = profileInfo.querySelector('.profile__about');
+const profileInfo = document.querySelector('.profile__info');
+const profileEditButton = profileInfo.querySelector('.profile__edit-button');
+const profileName = profileInfo.querySelector('.profile__name');
+const profileAbout = profileInfo.querySelector('.profile__about');
+
+const initialCards = [
+  {
+    name: 'Алтайский край',
+    link: '../images/alex-kotomanov-pCgQBi-wvTU-unsplash.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: '../images/sergey-pesterev-GYIxdUFEkX8-unsplash.jpg'
+  },
+  {
+    name: 'Москва',
+    link: '../images/sasha-yudaev-0I_6c7fmQ-8-unsplash.jpg'
+  },
+  {
+    name: 'Карелия',
+    link: '../images/tetiana-shyshkina-m9EnS-BqnKM-unsplash.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: '../images/daniil-silantev-WaRAHxoBVIo-unsplash.jpg'
+  },
+  {
+    name: 'Санкт-Петербург',
+    link: '../images/jean-estrella-sBIAMCBx2jQ-unsplash.jpg'
+  }
+];
 
 
 function togglePopup() {
