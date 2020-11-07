@@ -5,3 +5,7 @@
   object-fit: cover;
   color: #000;
 }
+
+.card__image:hover {
+  cursor: pointer;
+}
