@@ -9,7 +9,8 @@ const popupPlaceAddForm = popupPlaceAdd.querySelector('.popup__container');
 const popupInputPlaceName = popupPlaceAdd.querySelector('.popup__input_type_place-name');
 const popupInputPlaceLink = popupPlaceAdd.querySelector('.popup__input_type_place-link');
 const popupPlaceCloseButton = popupPlaceAdd.querySelector('.popup__close-button');
-const addCardButton = document.querySelector('.profile__add-button');
+
+const newCardButton = document.querySelector('.profile__add-button');
 
 const placeNameDefaultValue = 'Название'
 const placeLinkDefaultValue = 'Ссылка на картинку'
@@ -115,6 +116,10 @@ function newCard(cardObject) {
     const eventTarget = evt.target;
     eventTarget.classList.toggle('card__like-button_active');
   })
+  card.querySelector('.card__delete-button').addEventListener('click', evt => {
+    const eventTarget = evt.target;
+    eventTarget.closest('.card').remove();
+  })
 
   return card;
 }
@@ -126,7 +131,7 @@ profileEditButton.addEventListener('click', () => initProfilePopup(popupProfileE
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfileEdit));
 popupProfileEditForm.addEventListener('submit', submitProfileEditForm);
 
-addCardButton.addEventListener('click', () => openPopup(popupPlaceAdd));
+newCardButton.addEventListener('click', () => openPopup(popupPlaceAdd));
 popupPlaceCloseButton.addEventListener('click', () => resetPlacePopup(popupPlaceAdd));
 popupPlaceAddForm.addEventListener('submit', submitPlaceAddForm);
 
