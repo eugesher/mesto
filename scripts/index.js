@@ -10,6 +10,9 @@ const popupInputPlaceName = popupPlaceAdd.querySelector('.popup__input_type_plac
 const popupInputPlaceLink = popupPlaceAdd.querySelector('.popup__input_type_place-link');
 const popupPlaceCloseButton = popupPlaceAdd.querySelector('.popup__close-button');
 
+const popupPhotoView = document.querySelector('.popup_type_photo-view');
+const popupPhotoViewCloseButton = popupPhotoView.querySelector('.popup__close-button');
+
 const newCardButton = document.querySelector('.profile__add-button');
 
 const placeNameDefaultValue = 'Название'
@@ -112,14 +115,21 @@ function newCard(cardObject) {
   card.querySelector('.card__title').textContent = cardObject.name;
   card.querySelector('.card__image').setAttribute('src', cardObject.link);
   card.querySelector('.card__image').setAttribute('alt', cardObject.name);
+  card.querySelector('.card__image').addEventListener('click', evt => {
+    const eventTarget = evt.target;
+    popupPhotoView.querySelector('.popup__image').setAttribute('src', eventTarget.getAttribute('src'));
+    popupPhotoView.querySelector('.popup__image').setAttribute('alt', eventTarget.getAttribute('alt'));
+    popupPhotoView.querySelector('.popup__image-caption').textContent = cardObject.name;
+    openPopup(popupPhotoView);
+  });
   card.querySelector('.card__like-button').addEventListener('click', evt => {
     const eventTarget = evt.target;
     eventTarget.classList.toggle('card__like-button_active');
-  })
+  });
   card.querySelector('.card__delete-button').addEventListener('click', evt => {
     const eventTarget = evt.target;
     eventTarget.closest('.card').remove();
-  })
+  });
 
   return card;
 }
@@ -134,6 +144,8 @@ popupProfileEditForm.addEventListener('submit', submitProfileEditForm);
 newCardButton.addEventListener('click', () => openPopup(popupPlaceAdd));
 popupPlaceCloseButton.addEventListener('click', () => resetPlacePopup(popupPlaceAdd));
 popupPlaceAddForm.addEventListener('submit', submitPlaceAddForm);
+
+popupPhotoViewCloseButton.addEventListener('click', () => closePopup(popupPhotoView));
 
 popupInputPlaceName.addEventListener('focus', () => emptyInputValue(popupInputPlaceName));
 popupInputPlaceLink.addEventListener('focus', () => emptyInputValue(popupInputPlaceLink));
