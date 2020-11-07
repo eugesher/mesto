@@ -1,0 +1,7 @@
+.popup__container_type_image {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
+  border: 0;
+  width: min-content;
+  height: min-content;
+}
