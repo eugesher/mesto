@@ -9,8 +9,10 @@ const popupPlaceAddForm = popupPlaceAdd.querySelector('.popup__container');
 const popupInputPlaceName = popupPlaceAdd.querySelector('.popup__input_type_place-name');
 const popupInputPlaceLink = popupPlaceAdd.querySelector('.popup__input_type_place-link');
 const popupPlaceCloseButton = popupPlaceAdd.querySelector('.popup__close-button');
-
 const addCardButton = document.querySelector('.profile__add-button');
+
+const placeNameDefaultValue = 'Название'
+const placeLinkDefaultValue = 'Ссылка на картинку'
 
 const profileInfo = document.querySelector('.profile__info');
 const profileEditButton = profileInfo.querySelector('.profile__edit-button');
@@ -46,9 +48,6 @@ const initialCards = [
   }
 ];
 
-// let inputPlaceNameChanged = false;
-// let inputPlaceLinkChanged = false;
-
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -63,6 +62,23 @@ function initProfilePopup(popup) {
   popupInputProfileAbout.value = profileAbout.textContent;
 
   openPopup(popup)
+}
+
+function resetPlacePopup(popup) {
+  popupInputPlaceName.changed = false;
+  popupInputPlaceLink.changed = false;
+  popupInputPlaceName.classList.add('popup__input_empty');
+  popupInputPlaceLink.classList.add('popup__input_empty');
+  popupInputPlaceName.value = placeNameDefaultValue;
+  popupInputPlaceLink.value = placeLinkDefaultValue;
+
+  closePopup(popup);
+}
+
+function changeInputValue(input) {
+  if (!input.changed) input.value = '';
+  input.changed = true;
+  input.classList.remove('popup__input_empty');
 }
 
 function submitProfileEditForm(evt) {
@@ -92,4 +108,7 @@ popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfileE
 popupProfileEditForm.addEventListener('submit', submitProfileEditForm);
 
 addCardButton.addEventListener('click', () => openPopup(popupPlaceAdd));
-popupPlaceCloseButton.addEventListener('click', () => closePopup(popupPlaceAdd));
+popupPlaceCloseButton.addEventListener('click', () => resetPlacePopup(popupPlaceAdd));
+
+popupInputPlaceName.addEventListener('focus', () => changeInputValue(popupInputPlaceName));
+popupInputPlaceLink.addEventListener('focus', () => changeInputValue(popupInputPlaceLink));
