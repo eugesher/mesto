@@ -1,13 +1,13 @@
 const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
 const popupProfileEditForm = popupProfileEdit.querySelector('.popup__container')
-const popupInputProfileName = popupProfileEditForm.querySelector('.popup__input_content_profile-name');
-const popupInputProfileAbout = popupProfileEditForm.querySelector('.popup__input_content_profile-about');
+const popupInputProfileName = popupProfileEditForm.querySelector('.popup__input_type_profile-name');
+const popupInputProfileAbout = popupProfileEditForm.querySelector('.popup__input_type_profile-about');
 const popupProfileCloseButton = popupProfileEdit.querySelector('.popup__close-button');
 
 const popupPlaceAdd = document.querySelector('.popup_type_add-place');
 const popupPlaceAddForm = popupPlaceAdd.querySelector('.popup__container');
-const popupInputPlaceName = popupPlaceAdd.querySelector('.popup__input_content_place-name');
-const popupInputPlaceLink = popupPlaceAdd.querySelector('.popup__input_content_place-link');
+const popupInputPlaceName = popupPlaceAdd.querySelector('.popup__input_type_place-name');
+const popupInputPlaceLink = popupPlaceAdd.querySelector('.popup__input_type_place-link');
 const popupPlaceCloseButton = popupPlaceAdd.querySelector('.popup__close-button');
 
 const addCardButton = document.querySelector('.profile__add-button');
@@ -46,6 +46,10 @@ const initialCards = [
   }
 ];
 
+// let inputPlaceNameChanged = false;
+// let inputPlaceLinkChanged = false;
+
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
@@ -60,7 +64,6 @@ function initProfilePopup(popup) {
 
   openPopup(popup)
 }
-
 
 function submitProfileEditForm(evt) {
   evt.preventDefault();
@@ -83,8 +86,7 @@ function addCard(cardObject) {
 
 
 initialCards.forEach(addCard);
-// profileEditButton.addEventListener('click', toggleProfilePopup);
-// popupProfileCloseButton.addEventListener('click', toggleProfilePopup);
+
 profileEditButton.addEventListener('click', () => initProfilePopup(popupProfileEdit));
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfileEdit));
 popupProfileEditForm.addEventListener('submit', submitProfileEditForm);
