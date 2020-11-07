@@ -9,8 +9,9 @@ Grid layout
 querySelector  
 работа с classList  
 textContent  
-setAttribute
-addEventListener
+setAttribute  
+addEventListener  
+event object
 
 Факультет веб-разработки Яндекс Практикума.  
 Студент **Евгений Чернышов**.
