@@ -65,20 +65,21 @@ function initProfilePopup(popup) {
 }
 
 function resetPlacePopup(popup) {
-  popupInputPlaceName.changed = false;
-  popupInputPlaceLink.changed = false;
-  popupInputPlaceName.classList.add('popup__input_empty');
-  popupInputPlaceLink.classList.add('popup__input_empty');
+  [popupInputPlaceName, popupInputPlaceLink].forEach(inputField => {
+    inputField.changed = false;
+    inputField.classList.add('popup__input_empty');
+  })
+
   popupInputPlaceName.value = placeNameDefaultValue;
   popupInputPlaceLink.value = placeLinkDefaultValue;
 
   closePopup(popup);
 }
 
-function changeInputValue(input) {
-  if (!input.changed) input.value = '';
-  input.changed = true;
-  input.classList.remove('popup__input_empty');
+function changeInputValue(inputField) {
+  if (!inputField.changed) inputField.value = '';
+  inputField.changed = true;
+  inputField.classList.remove('popup__input_empty');
 }
 
 function submitProfileEditForm(evt) {
