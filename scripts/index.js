@@ -76,10 +76,12 @@ function resetPlacePopup(popup) {
   closePopup(popup);
 }
 
-function changeInputValue(inputField) {
-  if (!inputField.changed) inputField.value = '';
-  inputField.changed = true;
-  inputField.classList.remove('popup__input_empty');
+function emptyInputValue(inputField) {
+  if (!inputField.changed) {
+    inputField.changed = true;
+    inputField.value = '';
+    inputField.classList.remove('popup__input_empty');
+  }
 }
 
 function submitProfileEditForm(evt) {
@@ -91,18 +93,29 @@ function submitProfileEditForm(evt) {
   closePopup(popupProfileEdit);
 }
 
-function addCard(cardObject) {
+function submitPlaceAddForm(evt) {
+  evt.preventDefault();
+
+  const cardObject = {
+    name: popupInputPlaceName.value,
+    link: popupInputPlaceLink.value,
+  };
+
+  placesGrid.prepend(newCard(cardObject));
+}
+
+function newCard(cardObject) {
   const card = placeCardTemplate.cloneNode(true);
 
   card.querySelector('.card__title').textContent = cardObject.name;
   card.querySelector('.card__image').setAttribute('src', cardObject.link);
   card.querySelector('.card__image').setAttribute('alt', cardObject.name);
 
-  placesGrid.append(card);
+  return card;
 }
 
 
-initialCards.forEach(addCard);
+initialCards.forEach(cardObject => placesGrid.append(newCard(cardObject)));
 
 profileEditButton.addEventListener('click', () => initProfilePopup(popupProfileEdit));
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfileEdit));
@@ -110,6 +123,7 @@ popupProfileEditForm.addEventListener('submit', submitProfileEditForm);
 
 addCardButton.addEventListener('click', () => openPopup(popupPlaceAdd));
 popupPlaceCloseButton.addEventListener('click', () => resetPlacePopup(popupPlaceAdd));
+popupPlaceAddForm.addEventListener('submit', submitPlaceAddForm);
 
-popupInputPlaceName.addEventListener('focus', () => changeInputValue(popupInputPlaceName));
-popupInputPlaceLink.addEventListener('focus', () => changeInputValue(popupInputPlaceLink));
+popupInputPlaceName.addEventListener('focus', () => emptyInputValue(popupInputPlaceName));
+popupInputPlaceLink.addEventListener('focus', () => emptyInputValue(popupInputPlaceLink));
