@@ -102,6 +102,7 @@ function submitPlaceAddForm(evt) {
   };
 
   placesGrid.prepend(newCard(cardObject));
+  resetPlacePopup(popupPlaceAdd);
 }
 
 function newCard(cardObject) {
