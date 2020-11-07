@@ -27,67 +27,13 @@
     </section>
     <section class="places">
       <ul class="places__grid">
-<!--        <li class="card">-->
-<!--          <img src="./images/alex-kotomanov-pCgQBi-wvTU-unsplash.jpg" alt="Алтайский край" class="card__image">-->
-<!--          <div class="card__title-container">-->
-<!--            <h2 class="card__title">Алтайский край</h2>-->
-<!--            <button type="button" class="card__like-button">-->
-<!--              <img src="./images/like-button.svg" alt="Нравится" class="card__like-image">-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li class="card">-->
-<!--          <img src="./images/sergey-pesterev-GYIxdUFEkX8-unsplash.jpg" alt="Байкал" class="card__image">-->
-<!--          <div class="card__title-container">-->
-<!--            <h2 class="card__title">Байкал</h2>-->
-<!--            <button type="button" class="card__like-button">-->
-<!--              <img src="./images/like-button.svg" alt="Нравится" class="card__like-image">-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li class="card">-->
-<!--          <img src="./images/sasha-yudaev-0I_6c7fmQ-8-unsplash.jpg" alt="Москва" class="card__image">-->
-<!--          <div class="card__title-container">-->
-<!--            <h2 class="card__title">Москва</h2>-->
-<!--            <button type="button" class="card__like-button">-->
-<!--              <img src="./images/like-button.svg" alt="Нравится" class="card__like-image">-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li class="card">-->
-<!--          <img src="./images/tetiana-shyshkina-m9EnS-BqnKM-unsplash.jpg" alt="Карелия" class="card__image">-->
-<!--          <div class="card__title-container">-->
-<!--            <h2 class="card__title">Карелия</h2>-->
-<!--            <button type="button" class="card__like-button">-->
-<!--              <img src="./images/like-button.svg" alt="Нравится" class="card__like-image">-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li class="card">-->
-<!--          <img src="./images/daniil-silantev-WaRAHxoBVIo-unsplash.jpg" alt="Камчатка" class="card__image">-->
-<!--          <div class="card__title-container">-->
-<!--            <h2 class="card__title">Камчатка</h2>-->
-<!--            <button type="button" class="card__like-button">-->
-<!--              <img src="./images/like-button.svg" alt="Нравится" class="card__like-image">-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li class="card">-->
-<!--          <img src="./images/jean-estrella-sBIAMCBx2jQ-unsplash.jpg" alt="Санкт-Петербург" class="card__image">-->
-<!--          <div class="card__title-container">-->
-<!--            <h2 class="card__title">Санкт-Петербург</h2>-->
-<!--            <button type="button" class="card__like-button">-->
-<!--              <img src="./images/like-button.svg" alt="Нравится" class="card__like-image">-->
-<!--            </button>-->
-<!--          </div>-->
-<!--        </li>-->
       </ul>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup_type_profile-edit">
     <form name="profile-edit" class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <input name="user-name" type="text" class="popup__input popup__input_content_profile-name">
@@ -98,10 +44,21 @@
       </button>
     </form>
   </div>
+  <div class="popup popup_type_add-place">
+    <form name="profile-edit" class="popup__container">
+      <h2 class="popup__title">Новое место</h2>
+      <input name="place-name" type="text" class="popup__input popup__input_content_place-name" value="Название">
+      <input name="place-link" type="text" class="popup__input popup__input_content_place-link" value="Ссылка на картинку">
+      <button type="submit" class="popup__submit-button">Создать</button>
+      <button type="button" class="popup__close-button">
+        <img src="./images/cross-button.svg" alt="Закрыть" class="popup__close-button-image">
+      </button>
+    </form>
+  </div>
 </div>
 <template id="card-template">
   <li class="card">
-    <img src="" alt="" class="card__image">
+    <img src="#" alt="#" class="card__image">
     <div class="card__title-container">
       <h2 class="card__title"></h2>
       <button type="button" class="card__like-button">

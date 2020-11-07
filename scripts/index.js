@@ -1,16 +1,24 @@
-const popup = document.querySelector('.popup');
-const popupProfileEditForm = popup.querySelector('.popup__container')
-const popupCloseButton = popupProfileEditForm.querySelector('.popup__close-button');
+const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
+const popupProfileEditForm = popupProfileEdit.querySelector('.popup__container')
 const popupInputProfileName = popupProfileEditForm.querySelector('.popup__input_content_profile-name');
 const popupInputProfileAbout = popupProfileEditForm.querySelector('.popup__input_content_profile-about');
+const popupProfileCloseButton = popupProfileEdit.querySelector('.popup__close-button');
+
+const popupPlaceAdd = document.querySelector('.popup_type_add-place');
+const popupPlaceAddForm = popupPlaceAdd.querySelector('.popup__container');
+const popupInputPlaceName = popupPlaceAdd.querySelector('.popup__input_content_place-name');
+const popupInputPlaceLink = popupPlaceAdd.querySelector('.popup__input_content_place-link');
+const popupPlaceCloseButton = popupPlaceAdd.querySelector('.popup__close-button');
+
+const addCardButton = document.querySelector('.profile__add-button');
 
 const profileInfo = document.querySelector('.profile__info');
 const profileEditButton = profileInfo.querySelector('.profile__edit-button');
 const profileName = profileInfo.querySelector('.profile__name');
 const profileAbout = profileInfo.querySelector('.profile__about');
 
-const cardsGrid = document.querySelector('.places__grid');
-const cardTemplate = document.querySelector('#card-template').content;
+const placesGrid = document.querySelector('.places__grid');
+const placeCardTemplate = document.querySelector('#card-template').content;
 const initialCards = [
   {
     name: 'Алтайский край',
@@ -38,16 +46,21 @@ const initialCards = [
   }
 ];
 
-
-function togglePopup() {
-  if (popup.classList.contains('popup_opened')) {
-    popup.classList.remove('popup_opened');
-  } else {
-    popupInputProfileName.value = profileName.textContent;
-    popupInputProfileAbout.value = profileAbout.textContent;
-    popup.classList.add('popup_opened');
-  }
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+function initProfilePopup(popup) {
+  popupInputProfileName.value = profileName.textContent;
+  popupInputProfileAbout.value = profileAbout.textContent;
+
+  openPopup(popup)
+}
+
 
 function submitProfileEditForm(evt) {
   evt.preventDefault();
@@ -55,22 +68,26 @@ function submitProfileEditForm(evt) {
   profileName.textContent = popupInputProfileName.value;
   profileAbout.textContent = popupInputProfileAbout.value;
 
-  togglePopup();
+  closePopup(popupProfileEdit);
 }
 
-function addCard(object) {
-  const card = cardTemplate.cloneNode(true);
+function addCard(cardObject) {
+  const card = placeCardTemplate.cloneNode(true);
 
-  card.querySelector('.card__title').textContent = object.name;
-  card.querySelector('.card__image').setAttribute('src', object.link);
-  card.querySelector('.card__image').setAttribute('alt', object.name);
+  card.querySelector('.card__title').textContent = cardObject.name;
+  card.querySelector('.card__image').setAttribute('src', cardObject.link);
+  card.querySelector('.card__image').setAttribute('alt', cardObject.name);
 
-  cardsGrid.append(card);
+  placesGrid.append(card);
 }
+
 
 initialCards.forEach(addCard);
-
-
-profileEditButton.addEventListener('click', togglePopup);
-popupCloseButton.addEventListener('click', togglePopup);
+// profileEditButton.addEventListener('click', toggleProfilePopup);
+// popupProfileCloseButton.addEventListener('click', toggleProfilePopup);
+profileEditButton.addEventListener('click', () => initProfilePopup(popupProfileEdit));
+popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfileEdit));
 popupProfileEditForm.addEventListener('submit', submitProfileEditForm);
+
+addCardButton.addEventListener('click', () => openPopup(popupPlaceAdd));
+popupPlaceCloseButton.addEventListener('click', () => closePopup(popupPlaceAdd));
