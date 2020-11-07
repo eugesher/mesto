@@ -111,6 +111,10 @@ function newCard(cardObject) {
   card.querySelector('.card__title').textContent = cardObject.name;
   card.querySelector('.card__image').setAttribute('src', cardObject.link);
   card.querySelector('.card__image').setAttribute('alt', cardObject.name);
+  card.querySelector('.card__like-button').addEventListener('click', evt => {
+    const eventTarget = evt.target;
+    eventTarget.classList.toggle('card__like-button_active');
+  })
 
   return card;
 }
