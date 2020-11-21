@@ -156,4 +156,9 @@ popupInputPlaceLink.addEventListener('focus', () => emptyInputValue(popupInputPl
       closePopup(popup);
     }
   })
+  addEventListener('keydown', evt => {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  })
 })
