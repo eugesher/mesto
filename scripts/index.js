@@ -1,13 +1,13 @@
 const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
-const popupProfileEditForm = popupProfileEdit.querySelector('.popup__container')
+const popupProfileEditForm = popupProfileEdit.querySelector('.popup__container');
 const popupInputProfileName = popupProfileEditForm.querySelector('.popup__input_type_profile-name');
 const popupInputProfileAbout = popupProfileEditForm.querySelector('.popup__input_type_profile-about');
 const popupProfileCloseButton = popupProfileEdit.querySelector('.popup__close-button');
 
 const popupPlaceAdd = document.querySelector('.popup_type_add-place');
 const popupPlaceAddForm = popupPlaceAdd.querySelector('.popup__container');
-const popupInputPlaceName = popupPlaceAdd.querySelector('.popup__input_type_place-name');
-const popupInputPlaceLink = popupPlaceAdd.querySelector('.popup__input_type_place-link');
+const popupInputPlaceName = popupPlaceAddForm.querySelector('.popup__input_type_place-name');
+const popupInputPlaceLink = popupPlaceAddForm.querySelector('.popup__input_type_place-link');
 const popupPlaceCloseButton = popupPlaceAdd.querySelector('.popup__close-button');
 
 const popupPhotoView = document.querySelector('.popup_type_photo-view');
@@ -15,8 +15,8 @@ const popupPhotoViewCloseButton = popupPhotoView.querySelector('.popup__close-bu
 
 const newCardButton = document.querySelector('.profile__add-button');
 
-const placeNameDefaultValue = 'Название'
-const placeLinkDefaultValue = 'Ссылка на картинку'
+const placeNameDefaultValue = 'Название';
+const placeLinkDefaultValue = 'Ссылка на картинку';
 
 const profileInfo = document.querySelector('.profile__info');
 const profileEditButton = profileInfo.querySelector('.profile__edit-button');
