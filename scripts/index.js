@@ -1,13 +1,13 @@
 const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
-const popupProfileEditForm = popupProfileEdit.querySelector('.popup__container')
+const popupProfileEditForm = popupProfileEdit.querySelector('.popup__container');
 const popupInputProfileName = popupProfileEditForm.querySelector('.popup__input_type_profile-name');
 const popupInputProfileAbout = popupProfileEditForm.querySelector('.popup__input_type_profile-about');
 const popupProfileCloseButton = popupProfileEdit.querySelector('.popup__close-button');
 
 const popupPlaceAdd = document.querySelector('.popup_type_add-place');
 const popupPlaceAddForm = popupPlaceAdd.querySelector('.popup__container');
-const popupInputPlaceName = popupPlaceAdd.querySelector('.popup__input_type_place-name');
-const popupInputPlaceLink = popupPlaceAdd.querySelector('.popup__input_type_place-link');
+const popupInputPlaceName = popupPlaceAddForm.querySelector('.popup__input_type_place-name');
+const popupInputPlaceLink = popupPlaceAddForm.querySelector('.popup__input_type_place-link');
 const popupPlaceCloseButton = popupPlaceAdd.querySelector('.popup__close-button');
 
 const popupPhotoView = document.querySelector('.popup_type_photo-view');

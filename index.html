@@ -34,14 +34,14 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
   <div class="popup popup_type_profile-edit">
-    <form name="profile-edit" class="popup__container">
+    <form name="profile-edit" novalidate class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <div class="popup__input-container">
-        <input name="user-name" type="text" class="popup__input popup__input_type_profile-name">
+        <input name="user-name" type="text" minlength="2" maxlength="40" required class="popup__input popup__input_type_profile-name">
         <span class="popup__input-error" id="user-name-input-error"></span>
       </div>
       <div class="popup__input-container">
-        <input name="user-about" type="text" class="popup__input popup__input_type_profile-about">
+        <input name="user-about" type="text" minlength="2" maxlength="200" required class="popup__input popup__input_type_profile-about">
         <span class="popup__input-error" id="user-about-input-error"></span>
       </div>
       <button type="submit" class="popup__submit-button">Сохранить</button>
@@ -51,14 +51,14 @@
     </form>
   </div>
   <div class="popup popup_type_add-place">
-    <form name="profile-edit" class="popup__container">
+    <form name="place-add" novalidate class="popup__container">
       <h2 class="popup__title">Новое место</h2>
       <div class="popup__input-container">
-        <input name="place-name" type="text" class="popup__input popup__input_type_place-name popup__input_empty" value="Название">
+        <input name="place-name" type="text" minlength="2" maxlength="30" required class="popup__input popup__input_type_place-name popup__input_empty" value="Название">
         <span class="popup__input-error" id="place-name-input-error"></span>
       </div>
       <div class="popup__input-container">
-        <input name="place-link" type="text" class="popup__input popup__input_type_place-link popup__input_empty" value="Ссылка на картинку">
+        <input name="place-link" type="url" class="popup__input popup__input_type_place-link popup__input_empty" value="Ссылка на картинку">
         <span class="popup__input-error" id="place-link-input-error"></span>
       </div>
       <button type="submit" class="popup__submit-button">Создать</button>
@@ -92,5 +92,6 @@
   </li>
 </template>
 <script src="scripts/index.js"></script>
+<script src="scripts/validate.js"></script>
 </body>
 </html>
