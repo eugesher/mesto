@@ -138,14 +138,22 @@ function newCard(cardObject) {
 initialCards.forEach(cardObject => placesGrid.append(newCard(cardObject)));
 
 profileEditButton.addEventListener('click', () => initProfilePopup(popupProfileEdit));
-popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfileEdit));
 popupProfileEditForm.addEventListener('submit', submitProfileEditForm);
+popupProfileCloseButton.addEventListener('click', () => closePopup(popupProfileEdit));
 
 newCardButton.addEventListener('click', () => openPopup(popupPlaceAdd));
-popupPlaceCloseButton.addEventListener('click', () => resetPlacePopup(popupPlaceAdd));
 popupPlaceAddForm.addEventListener('submit', submitPlaceAddForm);
+popupPlaceCloseButton.addEventListener('click', () => resetPlacePopup(popupPlaceAdd));
 
 popupPhotoViewCloseButton.addEventListener('click', () => closePopup(popupPhotoView));
 
 popupInputPlaceName.addEventListener('focus', () => emptyInputValue(popupInputPlaceName));
 popupInputPlaceLink.addEventListener('focus', () => emptyInputValue(popupInputPlaceLink));
+
+[popupProfileEdit, popupPlaceAdd, popupPhotoView].forEach(popup => {
+  addEventListener('click', evt => {
+    if (evt.target.classList.contains('popup')) {
+      closePopup(popup);
+    }
+  })
+})
