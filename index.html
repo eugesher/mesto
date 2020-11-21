@@ -47,8 +47,14 @@
   <div class="popup popup_type_add-place">
     <form name="profile-edit" class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <input name="place-name" type="text" class="popup__input popup__input_type_place-name popup__input_empty" value="Название">
-      <input name="place-link" type="text" class="popup__input popup__input_type_place-link popup__input_empty" value="Ссылка на картинку">
+      <div class="popup__input-container">
+        <input name="place-name" type="text" class="popup__input popup__input_type_place-name popup__input_empty" value="Название">
+        <span class="popup__input-error" id="place-name-input-error">Вы пропустили это поле.</span>
+      </div>
+      <div class="popup__input-container">
+        <input name="place-link" type="text" class="popup__input popup__input_type_place-link popup__input_empty" value="Ссылка на картинку">
+        <span class="popup__input-error" id="place-link-input-error">Введите адрес сайта.</span>
+      </div>
       <button type="submit" class="popup__submit-button">Создать</button>
       <button type="button" class="popup__close-button">
         <img src="./images/cross-button.svg" alt="Закрыть" class="popup__close-button-image">
