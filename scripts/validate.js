@@ -23,7 +23,6 @@ function isValid(form, inputField) {
 function setEventListeners(form){
   const inputList = Array.from(form.querySelectorAll('.popup__input'));
   const submitButton = form.querySelector('.popup__submit-button');
-  console.log(submitButton);
 
   toggleButtonState(inputList, submitButton);
 
@@ -36,7 +35,8 @@ function setEventListeners(form){
 }
 
 function enableValidation() {
-  Array.from(document.querySelectorAll('.popup__container')).forEach((form) => {
+  const formList = Array.from(document.querySelectorAll('.popup__container:not(.popup__container_type_image)'));
+  formList.forEach((form) => {
     setEventListeners(form);
   });
 }
