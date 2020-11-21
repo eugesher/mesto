@@ -15,8 +15,9 @@ const popupPhotoViewCloseButton = popupPhotoView.querySelector('.popup__close-bu
 
 const newCardButton = document.querySelector('.profile__add-button');
 
-const placeNameDefaultValue = 'Название'
-const placeLinkDefaultValue = 'Ссылка на картинку'
+const placeNameDefaultValue = 'Название';
+const placeLinkDefaultValue = 'Ссылка на картинку';
+const emptyString = '';
 
 const profileInfo = document.querySelector('.profile__info');
 const profileEditButton = profileInfo.querySelector('.profile__edit-button');
@@ -83,7 +84,7 @@ function resetPlacePopup(popup) {
 function emptyInputValue(inputField) {
   if (!inputField.changed) {
     inputField.changed = true;
-    inputField.value = '';
+    inputField.value = emptyString;
     inputField.classList.remove('popup__input_empty');
   }
 }

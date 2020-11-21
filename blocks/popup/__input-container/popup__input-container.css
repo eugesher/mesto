@@ -1,4 +1,5 @@
 .popup__input-container {
+  display: block;
   position: relative;
 }
 

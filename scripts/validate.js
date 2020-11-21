@@ -1,23 +1,31 @@
-const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
-const popupInputProfileName = popupProfileEdit.querySelector('.popup__input_type_profile-name');
-const popupInputProfileAbout = popupProfileEdit.querySelector('.popup__input_type_profile-about');
+const profileNameError = document.querySelector(`.${popupInputProfileName.id}-error`);
+const profileAboutError = document.querySelector(`.${popupInputProfileAbout.id}-error`);
+const placeNameError = document.querySelector(`.${popupInputPlaceName.id}-error`);
+const placeAboutError = document.querySelector(`.${popupInputPlaceLink.id}-error`);
 
-const popupPlaceAdd = document.querySelector('.popup_type_add-place');
-const popupInputPlaceName = popupPlaceAdd.querySelector('.popup__input_type_place-name');
-const popupInputPlaceLink = popupPlaceAdd.querySelector('.popup__input_type_place-link');
+function showInputError(inputField, errorMessage) {
+  const inputError = inputField.closest('.popup__input-container').querySelector(`.${inputField.id}-error`);
+  inputField.classList.add('popup__input_condition_error');
+  inputError.classList.add('popup__input-error_active');
+  inputError.textContent = errorMessage;
+}
 
-popupInputProfileName.addEventListener('input', evt => {
-  console.log(evt.target.validity.valid);
-})
+function hideInputError(inputField) {
+  const inputError = inputField.closest('.popup__input-container').querySelector(`.${inputField.id}-error`);
+  inputField.classList.remove('popup__input_condition_error');
+  inputError.classList.remove('popup__input-error_active');
+  inputError.textContent = emptyString;
+}
 
-popupInputProfileAbout.addEventListener('input', evt => {
-  console.log(evt.target.validity.valid);
-})
+function isValid(inputField) {
+  if (!inputField.validity.valid) {
+    showInputError(inputField, inputField.validationMessage);
+  } else {
+    hideInputError(inputField);
+  }
+}
 
-popupInputPlaceName.addEventListener('input', evt => {
-  console.log(evt.target.validity.valid);
-})
-
-popupInputPlaceLink.addEventListener('input', evt => {
-  console.log(evt.target.validity.valid);
-})
+popupInputProfileName.addEventListener('input', () => isValid(popupInputProfileName));
+popupInputProfileAbout.addEventListener('input', () => isValid(popupInputProfileAbout));
+popupInputPlaceName.addEventListener('input', () => isValid(popupInputPlaceName));
+popupInputPlaceLink.addEventListener('input', () => isValid(popupInputPlaceLink));
