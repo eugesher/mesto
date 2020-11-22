@@ -55,4 +55,19 @@ function toggleButtonState (inputList, submitButton) {
   }
 }
 
+function resetValidation(form) {
+  const inputList = Array.from(form.querySelectorAll(settings.inputSelector));
+  const submitButton = form.querySelector(settings.submitButtonSelector);
+
+  inputList.forEach(inputField => {
+    if (inputField.classList.contains(settings.inputValueInvalidClass)) {
+      hideInputError(form, inputField);
+    }
+  })
+
+  if (hasInvalidInput(inputList)) {
+    toggleButtonState(inputList, submitButton)
+  }
+}
+
 enableValidation(settings = validationSettings);

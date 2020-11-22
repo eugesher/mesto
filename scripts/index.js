@@ -25,6 +25,8 @@ const placeCardTemplate = document.querySelector('#card-template').content;
 
 
 function openPopup(popup) {
+  const form = popup.querySelector('.popup__container');
+  resetValidation(form);
   popup.classList.add('popup_opened');
 }
 
