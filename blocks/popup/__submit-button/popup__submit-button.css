@@ -15,13 +15,13 @@
 }
 
 .popup__submit-button:hover {
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .popup__submit-button:disabled {
   background-color: rgba(0, 0, 0, 0);
-  border: 1px solid rgba(0, 0, 0, .2);
-  color: rgba(0, 0, 0, .2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 639px) {

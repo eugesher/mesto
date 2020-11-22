@@ -1,8 +1,8 @@
 .profile__info {
   display: grid;
   grid-template:
-      "n e" min-content
-      "a a" min-content;
+    "n e" min-content
+    "a a" min-content;
   gap: 5px 20px;
   margin: 18px 30px 0;
 }
