@@ -16,6 +16,3 @@ addEventListener
 Студент **Евгений Чернышов**.  
 
 [Ссылка на проект](https://eugesher.github.io/mesto/)  
-
-## TODO:
-Делегировать события  
