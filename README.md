@@ -18,5 +18,4 @@ addEventListener
 [Ссылка на проект](https://eugesher.github.io/mesto/)  
 
 ## TODO:
-Выбрать формы через document.forms.name  
 Делегировать события  

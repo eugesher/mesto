@@ -55,11 +55,4 @@ function toggleButtonState (inputList, submitButton) {
   }
 }
 
-enableValidation({
-  formListSelector: '.popup__container:not(.popup__container_type_image)',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-button',
-  errorActiveClass: '.popup__input-error_active',
-  inputValueInvalidClass: 'popup__input_invalid',
-  errorSuffix: '-error',
-});
+enableValidation(validationSettings);
