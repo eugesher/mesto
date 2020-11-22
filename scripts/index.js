@@ -122,7 +122,7 @@ popupInputPlaceName.addEventListener('focus', () => emptyInputValue(popupInputPl
 popupInputPlaceLink.addEventListener('focus', () => emptyInputValue(popupInputPlaceLink));
 
 [popupProfileEdit, popupPlaceAdd, popupPhotoView].forEach(popup => {
-  addEventListener('click', evt => {
+  addEventListener('mousedown', evt => {
     if (evt.target.classList.contains('popup')) {
       closePopup(popup);
     }

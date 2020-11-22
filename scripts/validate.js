@@ -1,18 +1,18 @@
-function showInputError(form, inputField, errorMessage, settings) {
+function showInputError(form, inputField, errorMessage) {
   const inputError = form.querySelector(`.${inputField.id}${settings.errorSuffix}`);
   inputField.classList.add(settings.inputValueInvalidClass);
   inputError.classList.add(settings.errorActiveClass);
   inputError.textContent = errorMessage;
 }
 
-function hideInputError(form, inputField, settings) {
+function hideInputError(form, inputField) {
   const inputError = form.querySelector(`.${inputField.id}${settings.errorSuffix}`);
   inputField.classList.remove(settings.inputValueInvalidClass);
   inputError.classList.remove(settings.errorActiveClass);
   inputError.textContent = '';
 }
 
-function isValid(form, inputField, settings) {
+function isValid(form, inputField) {
   if (!inputField.validity.valid) {
     showInputError(form, inputField, inputField.validationMessage, settings);
   } else {
@@ -20,7 +20,7 @@ function isValid(form, inputField, settings) {
   }
 }
 
-function setEventListeners(form, settings){
+function setEventListeners(form){
   const inputList = Array.from(form.querySelectorAll(settings.inputSelector));
   const submitButton = form.querySelector(settings.submitButtonSelector);
 
@@ -34,7 +34,7 @@ function setEventListeners(form, settings){
   });
 }
 
-function enableValidation(settings) {
+function enableValidation() {
   const formList = Array.from(document.querySelectorAll(settings.formListSelector));
   formList.forEach((form) => {
     setEventListeners(form, settings);
@@ -55,4 +55,4 @@ function toggleButtonState (inputList, submitButton) {
   }
 }
 
-enableValidation(validationSettings);
+enableValidation(settings = validationSettings);
