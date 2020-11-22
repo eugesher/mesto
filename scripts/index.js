@@ -94,54 +94,40 @@ function submitPlaceAddForm(evt) {
     link: popupInputPlaceLink.value,
   };
 
-  placesGrid.prepend(newCard(cardObject));
+  placesGrid.prepend(createCard(cardObject));
   resetPlacePopup(popupPlaceAdd);
 }
 
-function newCard(cardObject) {
+function createCard(cardObject) {
   const card = placeCardTemplate.cloneNode(true);
+  const cardTitle = card.querySelector('.card__title');
+  const cardImage = card.querySelector('.card__image');
+  const cardLikeButton = card.querySelector('.card__like-button');
+  const cardDeleteButton = card.querySelector('.card__delete-button');
 
-  card.querySelector(".card__title").textContent = cardObject.name;
-  card.querySelector(".card__image").setAttribute("src", cardObject.link);
-  card.querySelector(".card__image").setAttribute("alt", cardObject.name);
+  cardTitle.textContent = cardObject.name;
+  cardImage.setAttribute('src', cardObject.link);
+  cardImage.setAttribute('alt', cardObject.name);
+  cardImage.addEventListener('click', evt => {
+    const eventTarget = evt.target;
+    popupPhotoView.querySelector('.popup__image').setAttribute('src', eventTarget.getAttribute('src'));
+    popupPhotoView.querySelector('.popup__image').setAttribute('alt', eventTarget.getAttribute('alt'));
+    popupPhotoView.querySelector('.popup__image-caption').textContent = cardObject.name;
+    openPopup(popupPhotoView);
+  });
+  cardLikeButton.addEventListener('click', evt => {
+    const eventTarget = evt.target;
+    eventTarget.classList.toggle('card__like-button_active');
+  });
+  cardDeleteButton.addEventListener('click', evt => {
+    const eventTarget = evt.target;
+    eventTarget.closest('.card').remove();
+  });
 
   return card;
 }
 
-function setCardEventListeners(evt) {
-  const eventTarget = evt.target;
-
-  if (
-    eventTarget.classList.contains("card__like-button") ||
-    eventTarget.parentElement.classList.contains("card__like-button")
-  ) {
-    eventTarget.classList.toggle("card__like-button_active");
-  }
-
-  if (
-    eventTarget.classList.contains("card__delete-button") ||
-    eventTarget.parentElement.classList.contains("card__delete-button")
-  ) {
-    eventTarget.closest(".card").remove();
-  }
-
-  if (eventTarget.classList.contains("card__image")) {
-    popupPhotoView
-      .querySelector(".popup__image")
-      .setAttribute("src", eventTarget.getAttribute("src"));
-    popupPhotoView
-      .querySelector(".popup__image")
-      .setAttribute("alt", eventTarget.getAttribute("alt"));
-    popupPhotoView.querySelector(
-      ".popup__image-caption"
-    ).textContent = eventTarget.getAttribute("alt");
-    openPopup(popupPhotoView);
-  }
-}
-
-initialCards.forEach((cardObject) => placesGrid.append(newCard(cardObject)));
-
-placesGrid.addEventListener("click", setCardEventListeners);
+initialCards.forEach((cardObject) => placesGrid.append(createCard(cardObject)));
 
 profileEditButton.addEventListener("click", () =>
   initProfilePopup(popupProfileEdit)
