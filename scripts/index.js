@@ -66,11 +66,11 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-function initProfilePopup(popup) {
+function initProfilePopup() {
   popupInputProfileName.value = profileName.textContent;
   popupInputProfileAbout.value = profileAbout.textContent;
 
-  openPopup(popup);
+  openPopup(popupProfileEdit);
 }
 
 function resetPlacePopup(popup) {
