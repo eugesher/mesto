@@ -1,5 +1,5 @@
-const placeNameDefaultValue = "Название";
-const placeLinkDefaultValue = "Ссылка на картинку";
+const placeNamePlaceholder = "Название";
+const placeLinkPlaceholder = "Ссылка на картинку";
 
 const initialCards = [
   {

@@ -40,13 +40,34 @@ const profileAbout = profileInfo.querySelector(".profile__about");
 const placesGrid = document.querySelector(".places__grid");
 const placeCardTemplate = document.querySelector("#card-template").content;
 
+function handlePopupOverlayMousedown(evt) {
+  const eventTarget = evt.target;
+  if (eventTarget.classList.contains("popup")) {
+    closePopup(eventTarget);
+  }
+}
+
+function handleEscapeKeydown(evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.key === "Escape") {
+    closePopup(popupOpened);
+  }
+}
+
 function openPopup(popup) {
   const form = popup.querySelector(".popup__container");
+
+  popup.addEventListener("mousedown", handlePopupOverlayMousedown);
+  document.addEventListener("keydown", handleEscapeKeydown);
+
   resetValidation(form);
   popup.classList.add("popup_opened");
 }
 
 function closePopup(popup) {
+  popup.removeEventListener("mousedown", handlePopupOverlayMousedown);
+  document.removeEventListener("keydown", handleEscapeKeydown);
+
   popup.classList.remove("popup_opened");
 }
 
@@ -63,8 +84,8 @@ function resetPlacePopup(popup) {
     inputField.classList.add("popup__input_empty");
   });
 
-  popupInputPlaceName.value = placeNameDefaultValue;
-  popupInputPlaceLink.value = placeLinkDefaultValue;
+  popupInputPlaceName.value = placeNamePlaceholder;
+  popupInputPlaceLink.value = placeLinkPlaceholder;
 
   closePopup(popup);
 }
@@ -136,35 +157,17 @@ popupProfileEditForm.addEventListener("submit", submitProfileEditForm);
 popupProfileCloseButton.addEventListener("click", () =>
   closePopup(popupProfileEdit)
 );
-
 newCardButton.addEventListener("click", () => openPopup(popupPlaceAdd));
 popupPlaceAddForm.addEventListener("submit", submitPlaceAddForm);
 popupPlaceCloseButton.addEventListener("click", () =>
   resetPlacePopup(popupPlaceAdd)
 );
-
 popupPhotoViewCloseButton.addEventListener("click", () =>
   closePopup(popupPhotoView)
 );
-
 popupInputPlaceName.addEventListener("focus", () =>
   emptyInputValue(popupInputPlaceName)
 );
 popupInputPlaceLink.addEventListener("focus", () =>
   emptyInputValue(popupInputPlaceLink)
 );
-
-[popupProfileEdit, popupPlaceAdd, popupPhotoView].forEach((popup) => {
-  addEventListener("mousedown", (evt) => {
-    const eventTarget = evt.target;
-    if (eventTarget.classList.contains("popup")) {
-      closePopup(popup);
-    }
-  });
-
-  addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      closePopup(popup);
-    }
-  });
-});

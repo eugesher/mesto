@@ -24,6 +24,14 @@ function isValid(form, inputField) {
   }
 }
 
+function toggleButtonState(inputList, submitButton) {
+  if (hasInvalidInput(inputList)) {
+    submitButton.setAttribute("disabled", "");
+  } else {
+    submitButton.removeAttribute("disabled");
+  }
+}
+
 function setEventListeners(form) {
   const inputList = Array.from(form.querySelectorAll(settings.inputSelector));
   const submitButton = form.querySelector(settings.submitButtonSelector);
@@ -53,13 +61,6 @@ function hasInvalidInput(inputList) {
   });
 }
 
-function toggleButtonState(inputList, submitButton) {
-  if (hasInvalidInput(inputList)) {
-    submitButton.setAttribute("disabled", "");
-  } else {
-    submitButton.removeAttribute("disabled");
-  }
-}
 
 function resetValidation(form) {
   const inputList = Array.from(form.querySelectorAll(settings.inputSelector));
