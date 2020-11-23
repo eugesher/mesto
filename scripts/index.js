@@ -48,7 +48,7 @@ function handlePopupOverlayMousedown(evt) {
 }
 
 function handleEscapeKeydown(evt) {
-  const popupOpened = document.querySelector('.popup_opened');
+  const popupOpened = document.querySelector(".popup_opened");
   if (popupOpened && evt.key === "Escape") {
     closePopup(popupOpened);
   }
@@ -110,28 +110,33 @@ function submitProfileEditForm(evt) {
 
 function createCard(cardObject) {
   const card = placeCardTemplate.cloneNode(true);
-  const cardTitle = card.querySelector('.card__title');
-  const cardImage = card.querySelector('.card__image');
-  const cardLikeButton = card.querySelector('.card__like-button');
-  const cardDeleteButton = card.querySelector('.card__delete-button');
+  const cardTitle = card.querySelector(".card__title");
+  const cardImage = card.querySelector(".card__image");
+  const cardLikeButton = card.querySelector(".card__like-button");
+  const cardDeleteButton = card.querySelector(".card__delete-button");
 
   cardTitle.textContent = cardObject.name;
-  cardImage.setAttribute('src', cardObject.link);
-  cardImage.setAttribute('alt', cardObject.name);
-  cardImage.addEventListener('click', evt => {
+  cardImage.setAttribute("src", cardObject.link);
+  cardImage.setAttribute("alt", cardObject.name);
+  cardImage.addEventListener("click", (evt) => {
     const eventTarget = evt.target;
-    popupPhotoView.querySelector('.popup__image').setAttribute('src', eventTarget.getAttribute('src'));
-    popupPhotoView.querySelector('.popup__image').setAttribute('alt', eventTarget.getAttribute('alt'));
-    popupPhotoView.querySelector('.popup__image-caption').textContent = cardObject.name;
+    popupPhotoView
+      .querySelector(".popup__image")
+      .setAttribute("src", eventTarget.getAttribute("src"));
+    popupPhotoView
+      .querySelector(".popup__image")
+      .setAttribute("alt", eventTarget.getAttribute("alt"));
+    popupPhotoView.querySelector(".popup__image-caption").textContent =
+      cardObject.name;
     openPopup(popupPhotoView);
   });
-  cardLikeButton.addEventListener('click', evt => {
+  cardLikeButton.addEventListener("click", (evt) => {
     const eventTarget = evt.target;
-    eventTarget.classList.toggle('card__like-button_active');
+    eventTarget.classList.toggle("card__like-button_active");
   });
-  cardDeleteButton.addEventListener('click', evt => {
+  cardDeleteButton.addEventListener("click", (evt) => {
     const eventTarget = evt.target;
-    eventTarget.closest('.card').remove();
+    eventTarget.closest(".card").remove();
   });
 
   return card;
