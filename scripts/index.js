@@ -73,7 +73,7 @@ function initProfilePopup() {
   openPopup(popupProfileEdit);
 }
 
-function resetPlacePopup(popup) {
+function resetPlacePopup() {
   [popupInputPlaceName, popupInputPlaceLink].forEach((inputField) => {
     inputField.changed = false;
     inputField.classList.add("popup__input_empty");
@@ -82,7 +82,7 @@ function resetPlacePopup(popup) {
   popupInputPlaceName.value = placeNamePlaceholder;
   popupInputPlaceLink.value = placeLinkPlaceholder;
 
-  closePopup(popup);
+  closePopup(popupPlaceAdd);
 }
 
 function emptyInputValue(inputField) {
@@ -140,14 +140,12 @@ function submitPlaceAddForm(evt) {
   };
 
   placesGrid.prepend(createCard(cardObject));
-  resetPlacePopup(popupPlaceAdd);
+  resetPlacePopup();
 }
 
 initialCards.forEach((cardObject) => placesGrid.append(createCard(cardObject)));
 
-profileEditButton.addEventListener("click", () =>
-  initProfilePopup(popupProfileEdit)
-);
+profileEditButton.addEventListener("click", () => initProfilePopup);
 popupProfileEditForm.addEventListener("submit", submitProfileEditForm);
 popupProfileCloseButton.addEventListener("click", () =>
   closePopup(popupProfileEdit)
