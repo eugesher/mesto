@@ -24,6 +24,12 @@ function isValid(form, inputField) {
   }
 }
 
+function hasInvalidInput(inputList) {
+  return inputList.some((inputField) => {
+    return !inputField.validity.valid;
+  });
+}
+
 function toggleButtonState(inputList, submitButton) {
   submitButton.disabled = hasInvalidInput(inputList);
 }
@@ -50,13 +56,6 @@ function enableValidation() {
     setEventListeners(form, settings);
   });
 }
-
-function hasInvalidInput(inputList) {
-  return inputList.some((inputField) => {
-    return !inputField.validity.valid;
-  });
-}
-
 
 function resetValidation(form) {
   const inputList = Array.from(form.querySelectorAll(settings.inputSelector));

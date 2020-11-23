@@ -49,25 +49,20 @@ function handlePopupOverlayMousedown(evt) {
 
 function handleEscapeKeydown(evt) {
   const popupOpened = document.querySelector('.popup_opened');
-  if (evt.key === "Escape") {
+  if (popupOpened && evt.key === "Escape") {
     closePopup(popupOpened);
   }
 }
 
 function openPopup(popup) {
-  const form = popup.querySelector(".popup__container");
-
   popup.addEventListener("mousedown", handlePopupOverlayMousedown);
   document.addEventListener("keydown", handleEscapeKeydown);
-
-  resetValidation(form);
   popup.classList.add("popup_opened");
 }
 
 function closePopup(popup) {
   popup.removeEventListener("mousedown", handlePopupOverlayMousedown);
   document.removeEventListener("keydown", handleEscapeKeydown);
-
   popup.classList.remove("popup_opened");
 }
 
@@ -107,18 +102,6 @@ function submitProfileEditForm(evt) {
   closePopup(popupProfileEdit);
 }
 
-function submitPlaceAddForm(evt) {
-  evt.preventDefault();
-
-  const cardObject = {
-    name: popupInputPlaceName.value,
-    link: popupInputPlaceLink.value,
-  };
-
-  placesGrid.prepend(createCard(cardObject));
-  resetPlacePopup(popupPlaceAdd);
-}
-
 function createCard(cardObject) {
   const card = placeCardTemplate.cloneNode(true);
   const cardTitle = card.querySelector('.card__title');
@@ -146,6 +129,18 @@ function createCard(cardObject) {
   });
 
   return card;
+}
+
+function submitPlaceAddForm(evt) {
+  evt.preventDefault();
+
+  const cardObject = {
+    name: popupInputPlaceName.value,
+    link: popupInputPlaceLink.value,
+  };
+
+  placesGrid.prepend(createCard(cardObject));
+  resetPlacePopup(popupPlaceAdd);
 }
 
 initialCards.forEach((cardObject) => placesGrid.append(createCard(cardObject)));
