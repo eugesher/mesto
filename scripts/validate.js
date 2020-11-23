@@ -25,11 +25,7 @@ function isValid(form, inputField) {
 }
 
 function toggleButtonState(inputList, submitButton) {
-  if (hasInvalidInput(inputList)) {
-    submitButton.setAttribute("disabled", "");
-  } else {
-    submitButton.removeAttribute("disabled");
-  }
+  submitButton.disabled = hasInvalidInput(inputList);
 }
 
 function setEventListeners(form) {
