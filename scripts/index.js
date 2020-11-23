@@ -70,7 +70,13 @@ function initProfilePopup() {
   popupInputProfileName.value = profileName.textContent;
   popupInputProfileAbout.value = profileAbout.textContent;
 
+  resetValidation(popupProfileEditForm);
   openPopup(popupProfileEdit);
+}
+
+function initPlacePopup() {
+  resetValidation(popupPlaceAddForm);
+  openPopup(popupPlaceAdd);
 }
 
 function resetPlacePopup() {
@@ -145,12 +151,12 @@ function submitPlaceAddForm(evt) {
 
 initialCards.forEach((cardObject) => placesGrid.append(createCard(cardObject)));
 
-profileEditButton.addEventListener("click", () => initProfilePopup);
+profileEditButton.addEventListener("click", initProfilePopup);
 popupProfileEditForm.addEventListener("submit", submitProfileEditForm);
 popupProfileCloseButton.addEventListener("click", () =>
   closePopup(popupProfileEdit)
 );
-newCardButton.addEventListener("click", () => openPopup(popupPlaceAdd));
+newCardButton.addEventListener("click", initPlacePopup);
 popupPlaceAddForm.addEventListener("submit", submitPlaceAddForm);
 popupPlaceCloseButton.addEventListener("click", () =>
   resetPlacePopup(popupPlaceAdd)
