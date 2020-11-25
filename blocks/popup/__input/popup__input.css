@@ -11,3 +11,7 @@
   padding: 8px 0;
   margin-top: 24px;
 }
+
+.popup__input:focus {
+  outline: none;
+}
