@@ -91,7 +91,7 @@ function resetPlacePopup() {
   closePopup(popupPlaceAdd);
 }
 
-function emptyInputValue(inputField) {
+function removePlaceholder(inputField) {
   if (!inputField.changed) {
     inputField.changed = true;
     inputField.value = "";
@@ -169,9 +169,8 @@ popupPlaceCloseButton.addEventListener("click", () =>
 popupPhotoViewCloseButton.addEventListener("click", () =>
   closePopup(popupPhotoView)
 );
-popupInputPlaceName.addEventListener("focus", () =>
-  emptyInputValue(popupInputPlaceName)
-);
-popupInputPlaceLink.addEventListener("focus", () =>
-  emptyInputValue(popupInputPlaceLink)
-);
+[popupInputPlaceName, popupInputPlaceLink].forEach((inputField) => {
+  inputField.addEventListener("focus", () => {
+    removePlaceholder(inputField);
+  });
+});
