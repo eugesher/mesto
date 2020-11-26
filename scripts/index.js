@@ -121,7 +121,9 @@ function createCard(cardObject) {
   cardImage.addEventListener("click", (evt) => {
     const eventTarget = evt.target;
     const popupImage = popupPhotoView.querySelector(".popup__image");
-    const popupImageCaption = popupPhotoView.querySelector(".popup__image-caption");
+    const popupImageCaption = popupPhotoView.querySelector(
+      ".popup__image-caption"
+    );
 
     popupImage.setAttribute("src", eventTarget.getAttribute("src"));
     popupImage.setAttribute("alt", eventTarget.getAttribute("alt"));
