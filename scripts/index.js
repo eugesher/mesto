@@ -120,14 +120,12 @@ function createCard(cardObject) {
   cardImage.setAttribute("alt", cardObject.name);
   cardImage.addEventListener("click", (evt) => {
     const eventTarget = evt.target;
-    popupPhotoView
-      .querySelector(".popup__image")
-      .setAttribute("src", eventTarget.getAttribute("src"));
-    popupPhotoView
-      .querySelector(".popup__image")
-      .setAttribute("alt", eventTarget.getAttribute("alt"));
-    popupPhotoView.querySelector(".popup__image-caption").textContent =
-      cardObject.name;
+    const popupImage = popupPhotoView.querySelector(".popup__image");
+    const popupImageCaption = popupPhotoView.querySelector(".popup__image-caption");
+
+    popupImage.setAttribute("src", eventTarget.getAttribute("src"));
+    popupImage.setAttribute("alt", eventTarget.getAttribute("alt"));
+    popupImageCaption.textContent = cardObject.name;
     openPopup(popupPhotoView);
   });
   cardLikeButton.addEventListener("click", (evt) => {
