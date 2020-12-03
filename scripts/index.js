@@ -21,26 +21,6 @@ class Card {
     this._cardTitle.textContent = this._name;
     this._cardImage.setAttribute("src", this._link);
     this._cardImage.setAttribute("alt", this._name);
-    // this._cardImage.addEventListener("click", (evt) => {
-    //   const eventTarget = evt.target;
-    //   const popupImage = popupPhotoView.querySelector(".popup__image");
-    //   const popupImageCaption = popupPhotoView.querySelector(
-    //     ".popup__image-caption"
-    //   );
-    //
-    //   popupImage.setAttribute("src", eventTarget.getAttribute("src"));
-    //   popupImage.setAttribute("alt", eventTarget.getAttribute("alt"));
-    //   popupImageCaption.textContent = this._name;
-    //   openPopup(popupPhotoView);
-    // });
-    // this._cardLikeButton.addEventListener("click", (evt) => {
-    //   const eventTarget = evt.target;
-    //   eventTarget.classList.toggle("card__like-button_active");
-    // });
-    // this._cardDeleteButton.addEventListener("click", (evt) => {
-    //   const eventTarget = evt.target;
-    //   eventTarget.closest(".card").remove();
-    // });
 
     return this._cardElement;
   }
@@ -182,53 +162,19 @@ function submitProfileEditForm(evt) {
   closePopup(popupProfileEdit);
 }
 
-function createCard(cardObject) {
-  // const card = placeCardTemplate.cloneNode(true);
-  // const cardTitle = card.querySelector(".card__title");
-  // const cardImage = card.querySelector(".card__image");
-  // const cardLikeButton = card.querySelector(".card__like-button");
-  // const cardDeleteButton = card.querySelector(".card__delete-button");
-  //
-  // cardTitle.textContent = cardObject.name;
-  // cardImage.setAttribute("src", cardObject.link);
-  // cardImage.setAttribute("alt", cardObject.name);
-  // cardImage.addEventListener("click", (evt) => {
-  //   const eventTarget = evt.target;
-  //   const popupImage = popupPhotoView.querySelector(".popup__image");
-  //   const popupImageCaption = popupPhotoView.querySelector(
-  //     ".popup__image-caption"
-  //   );
-  //
-  //   popupImage.setAttribute("src", eventTarget.getAttribute("src"));
-  //   popupImage.setAttribute("alt", eventTarget.getAttribute("alt"));
-  //   popupImageCaption.textContent = cardObject.name;
-  //   openPopup(popupPhotoView);
-  // });
-  // cardLikeButton.addEventListener("click", (evt) => {
-  //   const eventTarget = evt.target;
-  //   eventTarget.classList.toggle("card__like-button_active");
-  // });
-  // cardDeleteButton.addEventListener("click", (evt) => {
-  //   const eventTarget = evt.target;
-  //   eventTarget.closest(".card").remove();
-  // });
-  //
-  // return card;
-}
-
 function submitPlaceAddForm(evt) {
   evt.preventDefault();
 
-  const cardObject = {
+  const cardData = {
     name: popupInputPlaceName.value,
     link: popupInputPlaceLink.value,
   };
+  const card = new Card(cardData, "#card-template");
 
-  placesGrid.prepend(createCard(cardObject));
+  placesGrid.prepend(card.generateCard());
   resetPlacePopup();
 }
 
-// initialCards.forEach((cardObject) => placesGrid.append(createCard(cardObject)));
 initialCards.forEach((cardData) => {
   const card = new Card(cardData, "#card-template");
   placesGrid.append(card.generateCard());
