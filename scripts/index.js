@@ -26,25 +26,34 @@ class Card {
   }
 
   _setEventListeners() {
-    this._cardImage = this._cardElement.querySelector(".card__image");
-    this._cardLikeButton = this._cardElement.querySelector(".card__like-button");
-    this._cardDeleteButton = this._cardElement.querySelector(".card__delete-button");
+    this._handleImageClick();
+    this._handleLikeButton();
+    this._handleDeleteButton();
+  }
 
+  _handleImageClick() {
     this._cardImage.addEventListener("click", (evt) => {
       const eventTarget = evt.target;
       const popupImage = popupPhotoView.querySelector(".popup__image");
       const popupImageCaption = popupPhotoView.querySelector(
         ".popup__image-caption"
       );
+
       popupImage.setAttribute("src", eventTarget.getAttribute("src"));
       popupImage.setAttribute("alt", eventTarget.getAttribute("alt"));
       popupImageCaption.textContent = this._name;
       openPopup(popupPhotoView);
     });
+  }
+
+  _handleLikeButton() {
     this._cardLikeButton.addEventListener("click", (evt) => {
       const eventTarget = evt.target;
       eventTarget.classList.toggle("card__like-button_active");
     });
+  }
+
+  _handleDeleteButton() {
     this._cardDeleteButton.addEventListener("click", (evt) => {
       const eventTarget = evt.target;
       eventTarget.closest(".card").remove();
