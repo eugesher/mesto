@@ -1,4 +1,5 @@
 import { openPopup } from "./utils.js";
+import {popupImage, popupImageCaption, popupPhotoView} from "./data.js";
 
 export class Card {
   constructor(data, templateSelector) {
@@ -10,6 +11,7 @@ export class Card {
   _getTemplate() {
     return document.querySelector(this._templateSelector).content.cloneNode(true);
   }
+
   _setEventListeners() {
     this._handleImageClick();
     this._handleLikeButton();
@@ -19,10 +21,6 @@ export class Card {
   _handleImageClick() {
     this._cardImage.addEventListener("click", (evt) => {
       const eventTarget = evt.target;
-      const popupPhotoView = document.querySelector(".popup_type_photo-view");
-      const popupImage = popupPhotoView.querySelector(".popup__image");
-      const popupImageCaption = popupPhotoView.querySelector(".popup__image-caption");
-
       popupImage.setAttribute("src", eventTarget.getAttribute("src"));
       popupImage.setAttribute("alt", eventTarget.getAttribute("alt"));
       popupImageCaption.textContent = this._name;

@@ -28,6 +28,10 @@ export const initialCards = [
   },
 ];
 
+export const popupPhotoView = document.querySelector(".popup_type_photo-view");
+export const popupImage = popupPhotoView.querySelector(".popup__image");
+export const popupImageCaption = popupPhotoView.querySelector(".popup__image-caption");
+
 export const validationSettings = {
   formListSelector: ".popup__container:not(.popup__container_type_image)",
   inputSelector: ".popup__input",
