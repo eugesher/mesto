@@ -1,4 +1,6 @@
+import {openPopup, closePopup} from "./utils.js";
 import {Card} from "./Card.js";
+import {FormValidator} from "./FormValidator.js";
 
 const popupProfileEdit = document.querySelector(".popup_type_profile-edit");
 const popupPlaceAdd = document.querySelector(".popup_type_add-place");
@@ -41,19 +43,19 @@ const profileAbout = profileInfo.querySelector(".profile__about");
 
 const placesGrid = document.querySelector(".places__grid");
 // const placeCardTemplate = document.querySelector("#card-template").content;
-
-import {openPopup, closePopup} from "./utils.js";
+const profileEditFormValidator = new FormValidator(popupProfileEditForm, validationSettings);
+const placeAddFormValidator = new FormValidator(popupPlaceAddForm, validationSettings);
 
 function initProfilePopup() {
   popupInputProfileName.value = profileName.textContent;
   popupInputProfileAbout.value = profileAbout.textContent;
 
-  resetValidation(popupProfileEditForm);
+  profileEditFormValidator.resetValidation();
   openPopup(popupProfileEdit);
 }
 
 function initPlacePopup() {
-  resetValidation(popupPlaceAddForm);
+  placeAddFormValidator.resetValidation();
   openPopup(popupPlaceAdd);
 }
 
@@ -122,3 +124,6 @@ popupPhotoViewCloseButton.addEventListener("click", () =>
     removePlaceholder(inputField);
   });
 });
+
+profileEditFormValidator.enableValidation();
+placeAddFormValidator.enableValidation();
