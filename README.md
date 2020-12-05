@@ -10,13 +10,7 @@
 Flex box  
 Grid layout
 
-### Работа с DOM:
-
-querySelector  
-работа с classList  
-textContent  
-setAttribute
-addEventListener
+### Работа с DOM.
 
 Факультет веб-разработки Яндекс Практикума.  
 Студент **Евгений Чернышов**.
