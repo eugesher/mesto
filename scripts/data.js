@@ -1,7 +1,7 @@
-const placeNamePlaceholder = "Название";
-const placeLinkPlaceholder = "Ссылка на картинку";
+export const placeNamePlaceholder = "Название";
+export const placeLinkPlaceholder = "Ссылка на картинку";
 
-const initialCards = [
+export const initialCards = [
   {
     name: "Алтайский край",
     link: "./images/alex-kotomanov-pCgQBi-wvTU-unsplash.jpg",
@@ -28,7 +28,7 @@ const initialCards = [
   },
 ];
 
-const validationSettings = {
+export const validationSettings = {
   formListSelector: ".popup__container:not(.popup__container_type_image)",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit-button",

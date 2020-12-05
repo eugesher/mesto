@@ -1,3 +1,4 @@
+import {initialCards, placeLinkPlaceholder, placeNamePlaceholder, validationSettings} from "./data.js";
 import {openPopup, closePopup} from "./utils.js";
 import {Card} from "./Card.js";
 import {FormValidator} from "./FormValidator.js";
@@ -42,7 +43,6 @@ const profileName = profileInfo.querySelector(".profile__name");
 const profileAbout = profileInfo.querySelector(".profile__about");
 
 const placesGrid = document.querySelector(".places__grid");
-// const placeCardTemplate = document.querySelector("#card-template").content;
 const profileEditFormValidator = new FormValidator(popupProfileEditForm, validationSettings);
 const placeAddFormValidator = new FormValidator(popupPlaceAddForm, validationSettings);
 
