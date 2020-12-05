@@ -93,6 +93,5 @@ popupPhotoViewCloseButton.addEventListener("click", () => closePopup(popupPhotoV
     removePlaceholder(inputField);
   });
 });
-
 profileEditFormValidator.enableValidation();
 placeAddFormValidator.enableValidation();
