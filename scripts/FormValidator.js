@@ -64,7 +64,7 @@ export class FormValidator {
 
     inputList.forEach((inputField) => {
       if (inputField.classList.contains(this._settings.inputValueInvalidClass)) {
-        this._hideInputError(this._form, inputField);
+        this._hideInputError(inputField);
       }
     });
 

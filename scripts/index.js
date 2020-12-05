@@ -43,6 +43,7 @@ const profileName = profileInfo.querySelector(".profile__name");
 const profileAbout = profileInfo.querySelector(".profile__about");
 
 const placesGrid = document.querySelector(".places__grid");
+
 const profileEditFormValidator = new FormValidator(popupProfileEditForm, validationSettings);
 const placeAddFormValidator = new FormValidator(popupPlaceAddForm, validationSettings);
 
