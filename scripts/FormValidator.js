@@ -2,6 +2,8 @@ export class FormValidator {
   constructor(form, settings) {
     this._form = form;
     this._settings = settings;
+    this._inputList = Array.from(this._form.querySelectorAll(this._settings.inputSelector));
+    this._submitButton = this._form.querySelector(this._settings.submitButtonSelector);
   }
 
   _showInputError(inputField, errorMessage) {
@@ -26,26 +28,22 @@ export class FormValidator {
     }
   }
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputField) => {
+  _hasInvalidInput() {
+    return this._inputList.some((inputField) => {
       return !inputField.validity.valid;
     });
   }
 
-  _toggleButtonState(inputList, submitButton) {
-    submitButton.disabled = this._hasInvalidInput(inputList);
+  _toggleButtonState() {
+    this._submitButton.disabled = this._hasInvalidInput();
   }
 
   _setEventListeners() {
-    const inputList = Array.from(this._form.querySelectorAll(this._settings.inputSelector));
-    const submitButton = this._form.querySelector(this._settings.submitButtonSelector);
-
-    this._toggleButtonState(inputList, submitButton);
-
-    inputList.forEach((inputField) => {
+    this._toggleButtonState();
+    this._inputList.forEach((inputField) => {
       inputField.addEventListener("input", () => {
         this._isValid(inputField, this._settings);
-        this._toggleButtonState(inputList, submitButton);
+        this._toggleButtonState();
       });
     });
   }
@@ -55,17 +53,14 @@ export class FormValidator {
   }
 
   resetValidation() {
-    const inputList = Array.from(this._form.querySelectorAll(this._settings.inputSelector));
-    const submitButton = this._form.querySelector(this._settings.submitButtonSelector);
-
-    inputList.forEach((inputField) => {
+    this._inputList.forEach((inputField) => {
       if (inputField.classList.contains(this._settings.inputValueInvalidClass)) {
         this._hideInputError(inputField);
       }
     });
 
-    if (this._hasInvalidInput(inputList)) {
-      this._toggleButtonState(inputList, submitButton);
+    if (this._hasInvalidInput()) {
+      this._toggleButtonState();
     }
   }
 }
