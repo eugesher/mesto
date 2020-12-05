@@ -1,4 +1,4 @@
-import {openPopup} from "./utils.js";
+import { openPopup } from "./utils.js";
 
 export class Card {
   constructor(data, templateSelector) {
@@ -10,23 +10,6 @@ export class Card {
   _getTemplate() {
     return document.querySelector(this._templateSelector).content.cloneNode(true);
   }
-
-  generateCard() {
-    this._cardElement = this._getTemplate();
-    this._cardTitle = this._cardElement.querySelector(".card__title");
-    this._cardImage = this._cardElement.querySelector(".card__image");
-    this._cardLikeButton = this._cardElement.querySelector(".card__like-button");
-    this._cardDeleteButton = this._cardElement.querySelector(".card__delete-button");
-
-    this._setEventListeners();
-
-    this._cardTitle.textContent = this._name;
-    this._cardImage.setAttribute("src", this._link);
-    this._cardImage.setAttribute("alt", this._name);
-
-    return this._cardElement;
-  }
-
   _setEventListeners() {
     this._handleImageClick();
     this._handleLikeButton();
@@ -38,9 +21,7 @@ export class Card {
       const eventTarget = evt.target;
       const popupPhotoView = document.querySelector(".popup_type_photo-view");
       const popupImage = popupPhotoView.querySelector(".popup__image");
-      const popupImageCaption = popupPhotoView.querySelector(
-        ".popup__image-caption"
-      );
+      const popupImageCaption = popupPhotoView.querySelector(".popup__image-caption");
 
       popupImage.setAttribute("src", eventTarget.getAttribute("src"));
       popupImage.setAttribute("alt", eventTarget.getAttribute("alt"));
@@ -61,5 +42,20 @@ export class Card {
       const eventTarget = evt.target;
       eventTarget.closest(".card").remove();
     });
+  }
+
+  generateCard() {
+    this._cardElement = this._getTemplate();
+    this._cardTitle = this._cardElement.querySelector(".card__title");
+    this._cardImage = this._cardElement.querySelector(".card__image");
+    this._cardLikeButton = this._cardElement.querySelector(".card__like-button");
+    this._cardDeleteButton = this._cardElement.querySelector(".card__delete-button");
+
+    this._setEventListeners();
+    this._cardTitle.textContent = this._name;
+    this._cardImage.setAttribute("src", this._link);
+    this._cardImage.setAttribute("alt", this._name);
+
+    return this._cardElement;
   }
 }
