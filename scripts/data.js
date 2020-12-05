@@ -1,6 +1,3 @@
-export const placeNamePlaceholder = "Название";
-export const placeLinkPlaceholder = "Ссылка на картинку";
-
 export const initialCards = [
   {
     name: "Алтайский край",

@@ -1,4 +1,4 @@
-import { initialCards, placeLinkPlaceholder, placeNamePlaceholder, validationSettings } from "./data.js";
+import { initialCards, validationSettings } from "./data.js";
 import { openPopup, closePopup } from "./utils.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
@@ -41,21 +41,9 @@ function initPlacePopup() {
 }
 
 function resetPlacePopup() {
-  [popupInputPlaceName, popupInputPlaceLink].forEach((inputField) => {
-    inputField.changed = false;
-    inputField.classList.add("popup__input_empty");
-  });
-  popupInputPlaceName.value = placeNamePlaceholder;
-  popupInputPlaceLink.value = placeLinkPlaceholder;
+  popupInputPlaceName.value = "";
+  popupInputPlaceLink.value = "";
   closePopup(popupPlaceAdd);
-}
-
-function removePlaceholder(inputField) {
-  if (!inputField.changed) {
-    inputField.changed = true;
-    inputField.value = "";
-    inputField.classList.remove("popup__input_empty");
-  }
 }
 
 function submitProfileEditForm(evt) {
@@ -88,10 +76,6 @@ newCardButton.addEventListener("click", initPlacePopup);
 popupPlaceAddForm.addEventListener("submit", submitPlaceAddForm);
 popupPlaceCloseButton.addEventListener("click", () => resetPlacePopup(popupPlaceAdd));
 popupPhotoViewCloseButton.addEventListener("click", () => closePopup(popupPhotoView));
-[popupInputPlaceName, popupInputPlaceLink].forEach((inputField) => {
-  inputField.addEventListener("focus", () => {
-    removePlaceholder(inputField);
-  });
-});
+
 profileEditFormValidator.enableValidation();
 placeAddFormValidator.enableValidation();
