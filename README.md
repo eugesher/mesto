@@ -10,7 +10,7 @@
 Flex box  
 Grid layout
 
-### Работа с DOM.
+### Работа с DOM:
 Class components
 
 Факультет веб-разработки Яндекс Практикума.  
