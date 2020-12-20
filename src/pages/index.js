@@ -15,7 +15,7 @@ import {
   placeAddForm,
   profileEditForm,
   profileInfoElements,
-  popupSelectors
+  popupSelectors,
 } from "../utils/constants.js";
 
 // section
@@ -32,7 +32,10 @@ const places = new Section(
 );
 
 // user info
-const userInfo = new UserInfo({ profileNameElement: profileInfoElements.name, profileAboutElement: profileInfoElements.about });
+const userInfo = new UserInfo({
+  profileNameElement: profileInfoElements.name,
+  profileAboutElement: profileInfoElements.about,
+});
 
 // popups
 const popupProfileEdit = new PopupWithForm({

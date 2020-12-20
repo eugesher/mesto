@@ -27,8 +27,8 @@ export const initialCards = [
 
 export const popupSelectors = {
   profileEdit: ".popup_type_profile-edit",
-  placeAdd: ".popup_type_add-place"
-}
+  placeAdd: ".popup_type_add-place",
+};
 
 export const validationSettings = {
   formListSelector: ".popup__container:not(.popup__container_type_image)",
@@ -45,7 +45,7 @@ const profileInfo = document.querySelector(".profile__info");
 export const profileInfoElements = {
   editButton: profileInfo.querySelector(".profile__edit-button"),
   name: profileInfo.querySelector(".profile__name"),
-  about: profileInfo.querySelector(".profile__about")
+  about: profileInfo.querySelector(".profile__about"),
 };
 
 const forms = document.forms;
