@@ -4,10 +4,26 @@ import { FormValidator } from "./FormValidator.js";
 import { PopupWithImage } from "./PopupWithImage.js";
 import { PopupWithForm } from "./PopupWithForm.js";
 import { UserInfo } from "./UserInfo.js";
+import { Section } from "./Section.js";
+
+const placesGrid = document.querySelector(".places__grid");
+
+const places = new Section(
+  {
+    items: initialCards,
+    renderer: (cardData) => {
+      const card = new Card({ data: cardData, handleCardClick }, "#card-template");
+      const cardElement = card.generateCard();
+      places.addItem(cardElement);
+    },
+  },
+  placesGrid
+);
 
 const profileInfo = document.querySelector(".profile__info");
 const profileEditButton = profileInfo.querySelector(".profile__edit-button");
 const profileName = profileInfo.querySelector(".profile__name");
+
 const profileAbout = profileInfo.querySelector(".profile__about");
 
 const userInfo = new UserInfo({ profileNameElement: profileName, profileAboutElement: profileAbout });
@@ -31,13 +47,12 @@ const popupPlaceAdd = new PopupWithForm({
       link: popupInputPlaceLink.value,
     };
     const card = new Card({ data: cardData, handleCardClick }, "#card-template");
-    placesGrid.prepend(card.generateCard());
+    places.addItem(card.generateCard());
     resetPlacePopup();
   },
 });
 
 const popupPhotoView = new PopupWithImage(".popup_type_photo-view");
-
 const forms = document.forms;
 const popupProfileEditForm = forms.profileEdit;
 const popupInputProfileName = popupProfileEditForm.querySelector(".popup__input_type_profile-name");
@@ -48,7 +63,6 @@ const popupInputPlaceName = popupPlaceAddForm.querySelector(".popup__input_type_
 const popupInputPlaceLink = popupPlaceAddForm.querySelector(".popup__input_type_place-link");
 const newCardButton = document.querySelector(".profile__add-button");
 
-const placesGrid = document.querySelector(".places__grid");
 const profileEditFormValidator = new FormValidator(popupProfileEditForm, validationSettings);
 const placeAddFormValidator = new FormValidator(popupPlaceAddForm, validationSettings);
 
@@ -77,10 +91,12 @@ function handleCardClick(evt) {
   popupPhotoView.open(imageName, imageLink);
 }
 
-initialCards.forEach((cardData) => {
-  const card = new Card({ data: cardData, handleCardClick }, "#card-template");
-  placesGrid.append(card.generateCard());
-});
+places.renderDefaultItems();
+
+// initialCards.forEach((cardData) => {
+//   const card = new Card({ data: cardData, handleCardClick }, "#card-template");
+//   placesGrid.append(card.generateCard());
+// });
 
 profileEditButton.addEventListener("click", initProfilePopup);
 newCardButton.addEventListener("click", initPlacePopup);
