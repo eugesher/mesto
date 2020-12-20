@@ -92,11 +92,8 @@ function handleCardClick(evt) {
 }
 
 places.renderDefaultItems();
-
-// initialCards.forEach((cardData) => {
-//   const card = new Card({ data: cardData, handleCardClick }, "#card-template");
-//   placesGrid.append(card.generateCard());
-// });
+popupProfileEdit.setEventListeners();
+popupPlaceAdd.setEventListeners();
 
 profileEditButton.addEventListener("click", initProfilePopup);
 newCardButton.addEventListener("click", initPlacePopup);

@@ -18,19 +18,12 @@ export class Popup {
     this._popup.addEventListener("mousedown", this._handleOverlayClose.bind(this));
   }
 
-  reset() {
-    this._closeButton.removeEventListener("click", () => this.close());
-    this._popup.removeEventListener("mousedown", this._handleOverlayClose.bind(this));
-  }
-
   open() {
-    this.setEventListeners();
     document.addEventListener("keydown", this._handleEscClose.bind(this));
     this._popup.classList.add("popup_opened");
   }
 
   close() {
-    this.reset();
     document.removeEventListener("keydown", this._handleEscClose.bind(this));
     this._popup.classList.remove("popup_opened");
   }
