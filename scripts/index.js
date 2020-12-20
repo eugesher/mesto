@@ -10,7 +10,7 @@ const popupProfileEdit = new PopupWithForm({
     profileName.textContent = popupInputProfileName.value;
     profileAbout.textContent = popupInputProfileAbout.value;
     popupProfileEdit.close();
-  }
+  },
 });
 const popupPlaceAdd = new PopupWithForm({
   popupSelector: ".popup_type_add-place",
@@ -19,14 +19,18 @@ const popupPlaceAdd = new PopupWithForm({
       name: popupInputPlaceName.value,
       link: popupInputPlaceLink.value,
     };
-    const card = new Card(cardData, (evt) => {
-      const imageName = evt.target.getAttribute("alt")
-      const imageLink = evt.target.getAttribute("src");
-      popupPhotoView.open(imageName, imageLink);
-    }, "#card-template");
+    const card = new Card(
+      cardData,
+      (evt) => {
+        const imageName = evt.target.getAttribute("alt");
+        const imageLink = evt.target.getAttribute("src");
+        popupPhotoView.open(imageName, imageLink);
+      },
+      "#card-template"
+    );
     placesGrid.prepend(card.generateCard());
     resetPlacePopup();
-  }
+  },
 });
 
 const forms = document.forms;
@@ -67,11 +71,15 @@ function resetPlacePopup() {
 }
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, (evt) => {
-    const imageName = evt.target.getAttribute("alt")
-    const imageLink = evt.target.getAttribute("src");
-    popupPhotoView.open(imageName, imageLink);
-  }, "#card-template");
+  const card = new Card(
+    cardData,
+    (evt) => {
+      const imageName = evt.target.getAttribute("alt");
+      const imageLink = evt.target.getAttribute("src");
+      popupPhotoView.open(imageName, imageLink);
+    },
+    "#card-template"
+  );
   placesGrid.append(card.generateCard());
 });
 
