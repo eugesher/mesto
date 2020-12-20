@@ -30,7 +30,7 @@ const popupPlaceAdd = new PopupWithForm({
       name: popupInputPlaceName.value,
       link: popupInputPlaceLink.value,
     };
-    const card = new Card(cardData, handleCardClick, "#card-template");
+    const card = new Card({ data: cardData, handleCardClick }, "#card-template");
     placesGrid.prepend(card.generateCard());
     resetPlacePopup();
   },
@@ -78,7 +78,7 @@ function handleCardClick(evt) {
 }
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, handleCardClick, "#card-template");
+  const card = new Card({ data: cardData, handleCardClick }, "#card-template");
   placesGrid.append(card.generateCard());
 });
 
