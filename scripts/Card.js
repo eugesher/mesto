@@ -1,11 +1,11 @@
-import { openPopup } from "./utils.js";
-import { popupImage, popupImageCaption, popupPhotoView } from "./data.js";
+import { popupImage, popupImageCaption } from "./data.js";
 
 export class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, popup) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._popup = popup;
   }
 
   _getTemplate() {
@@ -24,7 +24,7 @@ export class Card {
       popupImage.setAttribute("src", eventTarget.getAttribute("src"));
       popupImage.setAttribute("alt", eventTarget.getAttribute("alt"));
       popupImageCaption.textContent = this._name;
-      openPopup(popupPhotoView);
+      this._popup.open();
     });
   }
 
