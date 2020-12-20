@@ -1,11 +1,29 @@
 import { initialCards, validationSettings } from "./data.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import { Popup } from "./Popup.js";
 import {PopupWithImage} from "./PopupWithImage.js";
+import {PopupWithForm} from "./PopupWithForm.js";
 
-const popupProfileEdit = new Popup(".popup_type_profile-edit");
-const popupPlaceAdd = new Popup(".popup_type_add-place");
+const popupProfileEdit = new PopupWithForm({
+  popupSelector: ".popup_type_profile-edit",
+  handleFormSubmit: () => {
+    profileName.textContent = popupInputProfileName.value;
+    profileAbout.textContent = popupInputProfileAbout.value;
+    popupProfileEdit.close();
+  }
+});
+const popupPlaceAdd = new PopupWithForm({
+  popupSelector: ".popup_type_add-place",
+  handleFormSubmit: () => {
+    const cardData = {
+      name: popupInputPlaceName.value,
+      link: popupInputPlaceLink.value,
+    };
+    const card = new Card(cardData, "#card-template", popupPhotoView);
+    placesGrid.prepend(card.generateCard());
+    resetPlacePopup();
+  }
+});
 
 const forms = document.forms;
 const popupProfileEditForm = forms.profileEdit;
@@ -44,33 +62,13 @@ function resetPlacePopup() {
   popupPlaceAdd.close();
 }
 
-function submitProfileEditForm(evt) {
-  evt.preventDefault();
-  profileName.textContent = popupInputProfileName.value;
-  profileAbout.textContent = popupInputProfileAbout.value;
-  popupProfileEdit.close();
-}
-
-function submitPlaceAddForm(evt) {
-  evt.preventDefault();
-  const cardData = {
-    name: popupInputPlaceName.value,
-    link: popupInputPlaceLink.value,
-  };
-  const card = new Card(cardData, "#card-template", popupPhotoView);
-  placesGrid.prepend(card.generateCard());
-  resetPlacePopup();
-}
-
 initialCards.forEach((cardData) => {
   const card = new Card(cardData, "#card-template", popupPhotoView);
   placesGrid.append(card.generateCard());
 });
 
 profileEditButton.addEventListener("click", initProfilePopup);
-popupProfileEditForm.addEventListener("submit", submitProfileEditForm);
 newCardButton.addEventListener("click", initPlacePopup);
-popupPlaceAddForm.addEventListener("submit", submitPlaceAddForm);
 
 profileEditFormValidator.enableValidation();
 placeAddFormValidator.enableValidation();
