@@ -25,6 +25,11 @@ export const initialCards = [
   },
 ];
 
+export const popupSelectors = {
+  profileEdit: ".popup_type_profile-edit",
+  placeAdd: ".popup_type_add-place"
+}
+
 export const validationSettings = {
   formListSelector: ".popup__container:not(.popup__container_type_image)",
   inputSelector: ".popup__input",
@@ -33,6 +38,8 @@ export const validationSettings = {
   inputValueInvalidClass: "popup__input_invalid",
   errorPostfix: "-error",
 };
+
+export const placesGrid = document.querySelector(".places__grid");
 
 const profileInfo = document.querySelector(".profile__info");
 export const profileEditButton = profileInfo.querySelector(".profile__edit-button");

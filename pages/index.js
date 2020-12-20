@@ -6,17 +6,19 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import {
+  placesGrid,
   newCardButton,
   popupInputPlaceLink,
   popupInputPlaceName,
   popupInputProfileAbout,
-  popupInputProfileName, popupPlaceAddForm, popupProfileEditForm,
+  popupInputProfileName,
+  popupPlaceAddForm,
+  popupProfileEditForm,
   profileAbout,
   profileEditButton,
-  profileName
+  profileName,
+  popupSelectors
 } from "../utils/constants.js";
-
-const placesGrid = document.querySelector(".places__grid");
 
 const places = new Section(
   {
@@ -33,7 +35,7 @@ const places = new Section(
 const userInfo = new UserInfo({ profileNameElement: profileName, profileAboutElement: profileAbout });
 
 const popupProfileEdit = new PopupWithForm({
-  popupSelector: ".popup_type_profile-edit",
+  popupSelector: popupSelectors.profileEdit,
   handleFormSubmit: () => {
     userInfo.setUserInfo({
       name: popupInputProfileName.value,
@@ -43,7 +45,7 @@ const popupProfileEdit = new PopupWithForm({
   },
 });
 const popupPlaceAdd = new PopupWithForm({
-  popupSelector: ".popup_type_add-place",
+  popupSelector: popupSelectors.placeAdd,
   handleFormSubmit: () => {
     const cardData = {
       name: popupInputPlaceName.value,

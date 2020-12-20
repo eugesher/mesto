@@ -7,14 +7,14 @@ export class FormValidator {
   }
 
   _showInputError(inputField, errorMessage) {
-    const inputError = this._form.querySelector(`.${inputField.id}${this._settings.errorSuffix}`);
+    const inputError = this._form.querySelector(`.${inputField.id}${this._settings.errorPostfix}`);
     inputField.classList.add(this._settings.inputValueInvalidClass);
     inputError.classList.add(this._settings.errorActiveClass);
     inputError.textContent = errorMessage;
   }
 
   _hideInputError(inputField) {
-    const inputError = this._form.querySelector(`.${inputField.id}${this._settings.errorSuffix}`);
+    const inputError = this._form.querySelector(`.${inputField.id}${this._settings.errorPostfix}`);
     inputField.classList.remove(this._settings.inputValueInvalidClass);
     inputError.classList.remove(this._settings.errorActiveClass);
     inputError.textContent = "";
