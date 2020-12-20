@@ -10,5 +10,5 @@
   bottom: 0;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 500ms, opacity 500ms ease-in-out;
+  transition: visibility 250ms, opacity 250ms ease-in-out;
 }
