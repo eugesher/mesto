@@ -2,6 +2,7 @@ import { initialCards, validationSettings } from "./data.js";
 import { openPopup, closePopup } from "./utils.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+import {Popup} from "./Popup.js";
 
 const popupProfileEdit = document.querySelector(".popup_type_profile-edit");
 const popupPlaceAdd = document.querySelector(".popup_type_add-place");
@@ -79,3 +80,8 @@ popupPhotoViewCloseButton.addEventListener("click", () => closePopup(popupPhotoV
 
 profileEditFormValidator.enableValidation();
 placeAddFormValidator.enableValidation();
+
+const testProfilePopup = new Popup(".popup_type_profile-edit");
+const testPlacePopup = new Popup(".popup_type_add-place");
+// testProfilePopup.open();
+testPlacePopup.open();
