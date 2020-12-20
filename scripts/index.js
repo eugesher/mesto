@@ -2,6 +2,7 @@ import { initialCards, validationSettings } from "./data.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { Popup } from "./Popup.js";
+import {PopupWithImage} from "./PopupWithImage.js";
 
 const popupProfileEdit = new Popup(".popup_type_profile-edit");
 const popupPlaceAdd = new Popup(".popup_type_add-place");
@@ -14,7 +15,7 @@ const popupPlaceAddForm = forms.placeAdd;
 const popupInputPlaceName = popupPlaceAddForm.querySelector(".popup__input_type_place-name");
 const popupInputPlaceLink = popupPlaceAddForm.querySelector(".popup__input_type_place-link");
 
-const popupPhotoView = new Popup(".popup_type_photo-view");
+const popupPhotoView = new PopupWithImage(".popup_type_photo-view");
 const newCardButton = document.querySelector(".profile__add-button");
 const profileInfo = document.querySelector(".profile__info");
 const profileEditButton = profileInfo.querySelector(".profile__edit-button");

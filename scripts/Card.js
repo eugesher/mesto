@@ -1,5 +1,3 @@
-import { popupImage, popupImageCaption } from "./data.js";
-
 export class Card {
   constructor(data, templateSelector, popup) {
     this._name = data.name;
@@ -21,10 +19,9 @@ export class Card {
   _handleImageClick() {
     this._cardImage.addEventListener("click", (evt) => {
       const eventTarget = evt.target;
-      popupImage.setAttribute("src", eventTarget.getAttribute("src"));
-      popupImage.setAttribute("alt", eventTarget.getAttribute("alt"));
-      popupImageCaption.textContent = this._name;
-      this._popup.open();
+      const imageName = eventTarget.getAttribute("alt")
+      const imageLink = eventTarget.getAttribute("src");
+      this._popup.open(imageName, imageLink);
     });
   }
 
