@@ -31,5 +31,20 @@ export const validationSettings = {
   submitButtonSelector: ".popup__submit-button",
   errorActiveClass: ".popup__input-error_active",
   inputValueInvalidClass: "popup__input_invalid",
-  errorSuffix: "-error",
+  errorPostfix: "-error",
 };
+
+const profileInfo = document.querySelector(".profile__info");
+export const profileEditButton = profileInfo.querySelector(".profile__edit-button");
+export const profileName = profileInfo.querySelector(".profile__name");
+export const profileAbout = profileInfo.querySelector(".profile__about");
+
+const forms = document.forms;
+export const popupProfileEditForm = forms.profileEdit;
+export const popupInputProfileName = popupProfileEditForm.querySelector(".popup__input_type_profile-name");
+export const popupInputProfileAbout = popupProfileEditForm.querySelector(".popup__input_type_profile-about");
+export const popupPlaceAddForm = forms.placeAdd;
+export const popupInputPlaceName = popupPlaceAddForm.querySelector(".popup__input_type_place-name");
+export const popupInputPlaceLink = popupPlaceAddForm.querySelector(".popup__input_type_place-link");
+
+export const newCardButton = document.querySelector(".profile__add-button");

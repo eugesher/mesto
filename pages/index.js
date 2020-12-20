@@ -1,10 +1,20 @@
-import { initialCards, validationSettings } from "../utils/data.js";
+import { initialCards, validationSettings } from "../utils/constants.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
+import {
+  newCardButton,
+  popupInputPlaceLink,
+  popupInputPlaceName,
+  popupInputProfileAbout,
+  popupInputProfileName, popupPlaceAddForm, popupProfileEditForm,
+  profileAbout,
+  profileEditButton,
+  profileName
+} from "../utils/constants.js";
 
 const placesGrid = document.querySelector(".places__grid");
 
@@ -20,12 +30,6 @@ const places = new Section(
   placesGrid
 );
 
-const profileInfo = document.querySelector(".profile__info");
-const profileEditButton = profileInfo.querySelector(".profile__edit-button");
-const profileName = profileInfo.querySelector(".profile__name");
-
-const profileAbout = profileInfo.querySelector(".profile__about");
-
 const userInfo = new UserInfo({ profileNameElement: profileName, profileAboutElement: profileAbout });
 
 const popupProfileEdit = new PopupWithForm({
@@ -38,7 +42,6 @@ const popupProfileEdit = new PopupWithForm({
     popupProfileEdit.close();
   },
 });
-
 const popupPlaceAdd = new PopupWithForm({
   popupSelector: ".popup_type_add-place",
   handleFormSubmit: () => {
@@ -51,17 +54,7 @@ const popupPlaceAdd = new PopupWithForm({
     resetPlacePopup();
   },
 });
-
 const popupPhotoView = new PopupWithImage(".popup_type_photo-view");
-const forms = document.forms;
-const popupProfileEditForm = forms.profileEdit;
-const popupInputProfileName = popupProfileEditForm.querySelector(".popup__input_type_profile-name");
-const popupInputProfileAbout = popupProfileEditForm.querySelector(".popup__input_type_profile-about");
-const popupPlaceAddForm = forms.placeAdd;
-const popupInputPlaceName = popupPlaceAddForm.querySelector(".popup__input_type_place-name");
-
-const popupInputPlaceLink = popupPlaceAddForm.querySelector(".popup__input_type_place-link");
-const newCardButton = document.querySelector(".profile__add-button");
 
 const profileEditFormValidator = new FormValidator(popupProfileEditForm, validationSettings);
 const placeAddFormValidator = new FormValidator(popupPlaceAddForm, validationSettings);
