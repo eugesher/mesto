@@ -8,15 +8,13 @@ import { Section } from "../components/Section.js";
 import {
   placesGrid,
   newCardButton,
-  popupInputPlaceLink,
-  popupInputPlaceName,
-  popupInputProfileAbout,
-  popupInputProfileName,
-  popupPlaceAddForm,
-  popupProfileEditForm,
-  profileAbout,
-  profileEditButton,
-  profileName,
+  inputPlaceLink,
+  inputPlaceName,
+  inputProfileAbout,
+  inputProfileName,
+  placeAddForm,
+  profileEditForm,
+  profileInfoElements,
   popupSelectors
 } from "../utils/constants.js";
 
@@ -32,14 +30,16 @@ const places = new Section(
   placesGrid
 );
 
-const userInfo = new UserInfo({ profileNameElement: profileName, profileAboutElement: profileAbout });
+// user info
+const userInfo = new UserInfo({ profileNameElement: profileInfoElements.name, profileAboutElement: profileInfoElements.about });
 
+// popups
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupSelectors.profileEdit,
   handleFormSubmit: () => {
     userInfo.setUserInfo({
-      name: popupInputProfileName.value,
-      about: popupInputProfileAbout.value,
+      name: inputProfileName.value,
+      about: inputProfileAbout.value,
     });
     popupProfileEdit.close();
   },
@@ -48,23 +48,31 @@ const popupPlaceAdd = new PopupWithForm({
   popupSelector: popupSelectors.placeAdd,
   handleFormSubmit: () => {
     const cardData = {
-      name: popupInputPlaceName.value,
-      link: popupInputPlaceLink.value,
+      name: inputPlaceName.value,
+      link: inputPlaceLink.value,
     };
     const card = new Card({ data: cardData, handleCardClick }, "#card-template");
     places.addItem(card.generateCard());
-    resetPlacePopup();
+    popupPlaceAdd.close();
   },
 });
 const popupPhotoView = new PopupWithImage(".popup_type_photo-view");
 
-const profileEditFormValidator = new FormValidator(popupProfileEditForm, validationSettings);
-const placeAddFormValidator = new FormValidator(popupPlaceAddForm, validationSettings);
+// validation
+const profileEditFormValidator = new FormValidator(profileEditForm, validationSettings);
+const placeAddFormValidator = new FormValidator(placeAddForm, validationSettings);
+
+// functions
+function handleCardClick(evt) {
+  const imageName = evt.target.getAttribute("alt");
+  const imageLink = evt.target.getAttribute("src");
+  popupPhotoView.open(imageName, imageLink);
+}
 
 function initProfilePopup() {
   const userData = userInfo.getUserInfo();
-  popupInputProfileName.value = userData.name;
-  popupInputProfileAbout.value = userData.about;
+  inputProfileName.value = userData.name;
+  inputProfileAbout.value = userData.about;
   profileEditFormValidator.resetValidation();
   popupProfileEdit.open();
 }
@@ -74,24 +82,13 @@ function initPlacePopup() {
   popupPlaceAdd.open();
 }
 
-function resetPlacePopup() {
-  popupInputPlaceName.value = "";
-  popupInputPlaceLink.value = "";
-  popupPlaceAdd.close();
-}
-
-function handleCardClick(evt) {
-  const imageName = evt.target.getAttribute("alt");
-  const imageLink = evt.target.getAttribute("src");
-  popupPhotoView.open(imageName, imageLink);
-}
-
+// main
 places.renderDefaultItems();
 popupProfileEdit.setEventListeners();
 popupPlaceAdd.setEventListeners();
 popupPhotoView.setEventListeners();
 
-profileEditButton.addEventListener("click", initProfilePopup);
+profileInfoElements.editButton.addEventListener("click", initProfilePopup);
 newCardButton.addEventListener("click", initPlacePopup);
 
 profileEditFormValidator.enableValidation();
