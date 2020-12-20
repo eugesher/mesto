@@ -1,27 +1,26 @@
 export const initialCards = [
   {
     name: "Алтайский край",
-    link: "./images/alex-kotomanov-pCgQBi-wvTU-unsplash.jpg",
-  },
+    link: new URL('../images/alex-kotomanov-pCgQBi-wvTU-unsplash.jpg', import.meta.url),  },
   {
     name: "Байкал",
-    link: "./images/sergey-pesterev-GYIxdUFEkX8-unsplash.jpg",
+    link: new URL('../images/sergey-pesterev-GYIxdUFEkX8-unsplash.jpg', import.meta.url),
   },
   {
     name: "Москва",
-    link: "./images/sasha-yudaev-0I_6c7fmQ-8-unsplash.jpg",
+    link: new URL('../images/sasha-yudaev-0I_6c7fmQ-8-unsplash.jpg', import.meta.url),
   },
   {
     name: "Карелия",
-    link: "./images/tetiana-shyshkina-m9EnS-BqnKM-unsplash.jpg",
+    link: new URL('../images/tetiana-shyshkina-m9EnS-BqnKM-unsplash.jpg', import.meta.url),
   },
   {
     name: "Камчатка",
-    link: "./images/daniil-silantev-WaRAHxoBVIo-unsplash.jpg",
+    link: new URL('../images/daniil-silantev-WaRAHxoBVIo-unsplash.jpg', import.meta.url),
   },
   {
     name: "Санкт-Петербург",
-    link: "./images/jean-estrella-sBIAMCBx2jQ-unsplash.jpg",
+    link: new URL('../images/jean-estrella-sBIAMCBx2jQ-unsplash.jpg', import.meta.url),
   },
 ];
 
