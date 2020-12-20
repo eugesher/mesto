@@ -1,9 +1,9 @@
 export class Card {
-  constructor(data, templateSelector, popup) {
+  constructor(data, handleCardClick, templateSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
-    this._popup = popup;
   }
 
   _getTemplate() {
@@ -18,10 +18,7 @@ export class Card {
 
   _handleImageClick() {
     this._cardImage.addEventListener("click", (evt) => {
-      const eventTarget = evt.target;
-      const imageName = eventTarget.getAttribute("alt")
-      const imageLink = eventTarget.getAttribute("src");
-      this._popup.open(imageName, imageLink);
+      this._handleCardClick(evt);
     });
   }
 

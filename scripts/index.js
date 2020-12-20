@@ -1,8 +1,8 @@
 import { initialCards, validationSettings } from "./data.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import {PopupWithImage} from "./PopupWithImage.js";
-import {PopupWithForm} from "./PopupWithForm.js";
+import { PopupWithImage } from "./PopupWithImage.js";
+import { PopupWithForm } from "./PopupWithForm.js";
 
 const popupProfileEdit = new PopupWithForm({
   popupSelector: ".popup_type_profile-edit",
@@ -19,7 +19,11 @@ const popupPlaceAdd = new PopupWithForm({
       name: popupInputPlaceName.value,
       link: popupInputPlaceLink.value,
     };
-    const card = new Card(cardData, "#card-template", popupPhotoView);
+    const card = new Card(cardData, (evt) => {
+      const imageName = evt.target.getAttribute("alt")
+      const imageLink = evt.target.getAttribute("src");
+      popupPhotoView.open(imageName, imageLink);
+    }, "#card-template");
     placesGrid.prepend(card.generateCard());
     resetPlacePopup();
   }
@@ -63,7 +67,11 @@ function resetPlacePopup() {
 }
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template", popupPhotoView);
+  const card = new Card(cardData, (evt) => {
+    const imageName = evt.target.getAttribute("alt")
+    const imageLink = evt.target.getAttribute("src");
+    popupPhotoView.open(imageName, imageLink);
+  }, "#card-template");
   placesGrid.append(card.generateCard());
 });
 
