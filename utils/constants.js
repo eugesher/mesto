@@ -42,16 +42,19 @@ export const validationSettings = {
 export const placesGrid = document.querySelector(".places__grid");
 
 const profileInfo = document.querySelector(".profile__info");
-export const profileEditButton = profileInfo.querySelector(".profile__edit-button");
-export const profileName = profileInfo.querySelector(".profile__name");
-export const profileAbout = profileInfo.querySelector(".profile__about");
+export const profileInfoElements = {
+  editButton: profileInfo.querySelector(".profile__edit-button"),
+  name: profileInfo.querySelector(".profile__name"),
+  about: profileInfo.querySelector(".profile__about")
+};
 
 const forms = document.forms;
-export const popupProfileEditForm = forms.profileEdit;
-export const popupInputProfileName = popupProfileEditForm.querySelector(".popup__input_type_profile-name");
-export const popupInputProfileAbout = popupProfileEditForm.querySelector(".popup__input_type_profile-about");
-export const popupPlaceAddForm = forms.placeAdd;
-export const popupInputPlaceName = popupPlaceAddForm.querySelector(".popup__input_type_place-name");
-export const popupInputPlaceLink = popupPlaceAddForm.querySelector(".popup__input_type_place-link");
+export const profileEditForm = forms.profileEdit;
+export const inputProfileName = profileEditForm.querySelector(".popup__input_type_profile-name");
+export const inputProfileAbout = profileEditForm.querySelector(".popup__input_type_profile-about");
+
+export const placeAddForm = forms.placeAdd;
+export const inputPlaceName = placeAddForm.querySelector(".popup__input_type_place-name");
+export const inputPlaceLink = placeAddForm.querySelector(".popup__input_type_place-link");
 
 export const newCardButton = document.querySelector(".profile__add-button");
