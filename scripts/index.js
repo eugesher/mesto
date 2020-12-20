@@ -1,7 +1,7 @@
 import { initialCards, validationSettings } from "./data.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import {Popup} from "./Popup.js";
+import { Popup } from "./Popup.js";
 
 const popupProfileEdit = new Popup(".popup_type_profile-edit");
 const popupPlaceAdd = new Popup(".popup_type_add-place");
