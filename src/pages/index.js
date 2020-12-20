@@ -1,11 +1,6 @@
-import { initialCards, validationSettings } from "../utils/constants.js";
-import { Card } from "../components/Card.js";
-import { FormValidator } from "../components/FormValidator.js";
-import { PopupWithImage } from "../components/PopupWithImage.js";
-import { PopupWithForm } from "../components/PopupWithForm.js";
-import { UserInfo } from "../components/UserInfo.js";
-import { Section } from "../components/Section.js";
 import {
+  initialCards,
+  validationSettings,
   placesGrid,
   newCardButton,
   inputPlaceLink,
@@ -17,6 +12,12 @@ import {
   profileInfoElements,
   popupSelectors,
 } from "../utils/constants.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { Section } from "../components/Section.js";
 
 // section
 const places = new Section(
