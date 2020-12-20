@@ -9,13 +9,9 @@ export class Popup {
     if (evt.key === "Escape") this.close();
   }
 
-  _handleOverlayClose(evt) {
-    if (evt.target.classList.contains("popup")) this.close();
-  }
-
   setEventListeners() {
     this._closeButton.addEventListener("click", () => this.close());
-    this._popup.addEventListener("mousedown", this._handleOverlayClose.bind(this));
+    this._popup.addEventListener("mousedown", () => this.close());
   }
 
   open() {
