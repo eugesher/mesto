@@ -87,6 +87,7 @@ function handleCardClick(evt) {
 places.renderDefaultItems();
 popupProfileEdit.setEventListeners();
 popupPlaceAdd.setEventListeners();
+popupPhotoView.setEventListeners();
 
 profileEditButton.addEventListener("click", initProfilePopup);
 newCardButton.addEventListener("click", initPlacePopup);
