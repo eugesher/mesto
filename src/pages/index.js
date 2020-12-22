@@ -58,7 +58,7 @@ const popupPlaceAdd = new PopupWithForm({
       link: inputPlaceLink.value,
     };
     const card = new Card({ data: cardData, handleCardClick }, "#card-template");
-    places.addItem(card.generateCard());
+    places.addItem(card.generateCard(), true);
     popupPlaceAdd.close();
   },
 });
