@@ -19,6 +19,16 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
+import { Api } from "../components/Api.js";
+
+// api
+const api = new Api({
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-19",
+  headers: {
+    authorization: "923e2964-e93c-462a-8318-e3004cff48bd",
+    "Content-Type": "application/json",
+  },
+});
 
 // section
 const places = new Section(
@@ -88,8 +98,19 @@ function initPlacePopup() {
   popupPlaceAdd.open();
 }
 
+function load() {
+  Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then((data) => {
+      places.renderItems(data[1]);
+      userInfo.setUserInfo(data[0]);
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+}
+
 // main
-places.renderDefaultItems();
+load();
 popupProfileEdit.setEventListeners();
 popupPlaceAdd.setEventListeners();
 popupPhotoView.setEventListeners();
