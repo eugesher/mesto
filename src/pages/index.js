@@ -53,13 +53,21 @@ const userInfo = new UserInfo({
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupSelectors.profileEdit,
   handleFormSubmit: () => {
-    userInfo.setUserInfo({
+    const userData = {
       name: inputProfileName.value,
       about: inputProfileAbout.value,
-    });
-    popupProfileEdit.close();
+    };
+    api
+      .patchUserInfo(userData).then(data => {
+      userInfo.setUserInfo(data)
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => popupProfileEdit.close());
   },
 });
+
 const popupPlaceAdd = new PopupWithForm({
   popupSelector: popupSelectors.placeAdd,
   handleFormSubmit: () => {

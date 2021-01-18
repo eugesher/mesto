@@ -24,7 +24,7 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify({ name: name, about: about }),
     }).then((r) => {
-      if (r.ok) return r;
+      if (r.ok) return r.json();
       else return Promise.reject(`Ошибка(Api.editProfile): ${r.status}`);
     });
   }
@@ -35,7 +35,7 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify({ name: name, link: link }),
     }).then((r) => {
-      if (r.ok) return r;
+      if (r.ok) return r.json();
       else return Promise.reject(`Ошибка(Api.postCard): ${r.status}`);
     });
   }
@@ -46,7 +46,7 @@ export class Api {
       headers: this._headers,
     }).then((r) => {
       console.log(cardId)
-      if (r.ok) return r;
+      if (r.ok) return r.json();
       else return Promise.reject(`Ошибка(Api.deleteCard): ${r.status}`);
     });
   }
