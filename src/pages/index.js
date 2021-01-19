@@ -88,7 +88,7 @@ const placeAddFormValidator = new FormValidator(placeAddForm, validationSettings
 
 // functions
 function createCard(data) {
-  return new Card(data, "#card-template", userId, { handleCardClick: () => {
+  return new Card(data, "#card-template", userId, { handleCardClick: (evt) => {
       const imageName = evt.target.getAttribute("alt");
       const imageLink = evt.target.getAttribute("src");
       popupPhotoView.open(imageName, imageLink);
