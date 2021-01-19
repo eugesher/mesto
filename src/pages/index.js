@@ -1,6 +1,6 @@
 import "./index.css";
 import {
-  initialCards,
+  // initialCards,
   validationSettings,
   placesGrid,
   newCardButton,
@@ -31,17 +31,10 @@ const api = new Api({
 });
 
 // section
-const places = new Section(
-  {
-    items: initialCards,
-    renderer: (cardData) => {
-      const card = new Card({ data: cardData, handleCardClick }, "#card-template");
-      const cardElement = card.generateCard();
-      places.addItem(cardElement);
-    },
-  },
-  placesGrid
-);
+const places = new Section((cardData) => {
+  const card = new Card(cardData, "#card-template", { handleCardClick });
+  places.addItem(card.generateCard());
+}, placesGrid);
 
 // user info
 const userInfo = new UserInfo({
@@ -75,7 +68,7 @@ const popupPlaceAdd = new PopupWithForm({
       name: inputPlaceName.value,
       link: inputPlaceLink.value,
     };
-    const card = new Card({ data: cardData, handleCardClick }, "#card-template");
+    const card = new Card(cardData, "#card-template", { handleCardClick });
     places.addItem(card.generateCard(), true);
     popupPlaceAdd.close();
   },
