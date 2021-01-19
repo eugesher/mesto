@@ -1,30 +1,3 @@
-// export const initialCards = [
-//   {
-//     name: "Алтайский край",
-//     link: new URL("../images/alex-kotomanov-pCgQBi-wvTU-unsplash.jpg", import.meta.url),
-//   },
-//   {
-//     name: "Байкал",
-//     link: new URL("../images/sergey-pesterev-GYIxdUFEkX8-unsplash.jpg", import.meta.url),
-//   },
-//   {
-//     name: "Москва",
-//     link: new URL("../images/sasha-yudaev-0I_6c7fmQ-8-unsplash.jpg", import.meta.url),
-//   },
-//   {
-//     name: "Карелия",
-//     link: new URL("../images/tetiana-shyshkina-m9EnS-BqnKM-unsplash.jpg", import.meta.url),
-//   },
-//   {
-//     name: "Камчатка",
-//     link: new URL("../images/daniil-silantev-WaRAHxoBVIo-unsplash.jpg", import.meta.url),
-//   },
-//   {
-//     name: "Санкт-Петербург",
-//     link: new URL("../images/jean-estrella-sBIAMCBx2jQ-unsplash.jpg", import.meta.url),
-//   },
-// ];
-
 export const popupSelectors = {
   profileEdit: ".popup_type_profile-edit",
   placeAdd: ".popup_type_add-place",

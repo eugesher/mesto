@@ -46,12 +46,11 @@ const userInfo = new UserInfo({
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupSelectors.profileEdit,
   handleFormSubmit: () => {
-    const userData = {
-      name: inputProfileName.value,
-      about: inputProfileAbout.value,
-    };
     api
-      .patchUserInfo(userData).then(data => {
+      .patchUserInfo({
+        name: inputProfileName.value,
+        about: inputProfileAbout.value,
+      }).then(data => {
       userInfo.setUserInfo(data)
       })
       .catch((e) => {
@@ -64,13 +63,18 @@ const popupProfileEdit = new PopupWithForm({
 const popupPlaceAdd = new PopupWithForm({
   popupSelector: popupSelectors.placeAdd,
   handleFormSubmit: () => {
-    const cardData = {
-      name: inputPlaceName.value,
-      link: inputPlaceLink.value,
-    };
-    const card = new Card(cardData, "#card-template", { handleCardClick });
-    places.addItem(card.generateCard(), true);
-    popupPlaceAdd.close();
+    api
+      .postCard({
+        name: inputPlaceName.value,
+        link: inputPlaceLink.value,
+      })
+      .then((data) => {
+        const card = new Card(data, "#card-template", { handleCardClick })
+        places.addItem(card.generateCard(), true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   },
 });
 const popupPhotoView = new PopupWithImage(".popup_type_photo-view");
