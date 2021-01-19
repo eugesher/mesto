@@ -52,8 +52,9 @@ const popupProfileEdit = new PopupWithForm({
       .patchUserInfo({
         name: inputProfileName.value,
         about: inputProfileAbout.value,
-      }).then(data => {
-      userInfo.setUserInfo(data)
+      })
+      .then((data) => {
+        userInfo.setUserInfo(data);
       })
       .catch((e) => {
         console.log(e);
@@ -88,16 +89,19 @@ const placeAddFormValidator = new FormValidator(placeAddForm, validationSettings
 
 // functions
 function createCard(data) {
-  const card = new Card(data, "#card-template", userId, { handleCardClick: (evt) => {
+  const card = new Card(data, "#card-template", userId, {
+    handleCardClick: (evt) => {
       const imageName = evt.target.getAttribute("alt");
       const imageLink = evt.target.getAttribute("src");
       popupPhotoView.open(imageName, imageLink);
-    }, handleDeleteButton: (cardId) =>  {
+    },
+    handleDeleteButton: (cardId) => {
       popupCardDelete.setSubmitAction(() => {
         api
-          .deleteCard(cardId).then(() => {
-          card.remove();
-        })
+          .deleteCard(cardId)
+          .then(() => {
+            card.remove();
+          })
           .catch((e) => {
             console.log(e);
           })
@@ -106,7 +110,8 @@ function createCard(data) {
           });
       });
       popupCardDelete.open();
-    }});
+    },
+  });
   return card;
 }
 

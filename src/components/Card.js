@@ -1,5 +1,5 @@
 export class Card {
-  constructor({  _id, name, link, likes, owner  }, templateSelector, userId, { handleCardClick, handleDeleteButton }) {
+  constructor({ _id, name, link, likes, owner }, templateSelector, userId, { handleCardClick, handleDeleteButton }) {
     this._id = _id;
     this._name = name;
     this._link = link;
@@ -10,7 +10,7 @@ export class Card {
     this._handleDeleteButton = handleDeleteButton;
     this._templateSelector = templateSelector;
     this._template = this._getTemplate();
-    this._element = this._template.querySelector(".card")
+    this._element = this._template.querySelector(".card");
     this._likeButton = this._template.querySelector(".card__like-button");
     this._deleteButton = this._template.querySelector(".card__delete-button");
     // todo: rename fields
@@ -41,17 +41,17 @@ export class Card {
       this._likeCard();
     });
   }
-  
+
   _handleDeleteButtonAction() {
     this._deleteButton.addEventListener("click", () => {
       this._handleDeleteButton(this._id);
     });
   }
-  
+
   _getLikeCount() {
     return this._likes.length;
   }
-  
+
   remove() {
     this._element.remove();
   }
