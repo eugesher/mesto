@@ -2,6 +2,7 @@ export class Card {
   constructor({  _id, name, link, likes, owner  }, templateSelector, { handleCardClick }) {
     this._name = name;
     this._link = link;
+    this._likes = likes;
     this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
     this._cardElement = this._getTemplate();
@@ -44,15 +45,21 @@ export class Card {
       this._deleteCard();
     });
   }
+  
+  _getLikeCount() {
+    return this._likes.length;
+  }
 
   generateCard() {
     this._cardTitle = this._cardElement.querySelector(".card__title");
     this._cardImage = this._cardElement.querySelector(".card__image");
+    this._cardLikeCounter = this._cardElement.querySelector(".card__like-count");
 
     this._setEventListeners();
     this._cardTitle.textContent = this._name;
     this._cardImage.setAttribute("src", this._link);
     this._cardImage.setAttribute("alt", this._name);
+    this._cardLikeCounter.textContent = this._getLikeCount();
 
     return this._cardElement;
   }

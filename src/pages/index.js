@@ -1,6 +1,5 @@
 import "./index.css";
 import {
-  // initialCards,
   validationSettings,
   placesGrid,
   newCardButton,
