@@ -53,7 +53,6 @@ export class Card {
   }
   
   remove() {
-    console.log(this._cardElement);
     this._card.remove();
   }
 
