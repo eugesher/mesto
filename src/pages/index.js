@@ -79,7 +79,7 @@ const popupPlaceAdd = new PopupWithForm({
       });
   },
 });
-const popupPhotoView = new PopupWithImage(".popup_type_photo-view");
+const popupPhotoView = new PopupWithImage(popupSelectors.photoView);
 const popupCardDelete = new PopupConfirm(popupSelectors.confirm);
 
 // validation

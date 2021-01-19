@@ -1,6 +1,7 @@
 export const popupSelectors = {
   profileEdit: ".popup_type_profile-edit",
   placeAdd: ".popup_type_add-place",
+  photoView: ".popup_type_photo-view",
   confirm: ".popup_type_confirm"
 };
 
