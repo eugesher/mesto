@@ -1,6 +1,7 @@
 export const popupSelectors = {
   profileEdit: ".popup_type_profile-edit",
   placeAdd: ".popup_type_add-place",
+  confirm: ".popup_type_confirm"
 };
 
 export const validationSettings = {

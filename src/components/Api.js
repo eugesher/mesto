@@ -45,7 +45,6 @@ export class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((r) => {
-      console.log(cardId)
       if (r.ok) return r.json();
       else return Promise.reject(`Ошибка(Api.deleteCard): ${r.status}`);
     });

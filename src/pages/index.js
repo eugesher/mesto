@@ -19,6 +19,9 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { Section } from "../components/Section.js";
 import { Api } from "../components/Api.js";
+import { PopupConfirm } from "../components/PopupConfirm.js";
+
+let userId;
 
 // api
 const api = new Api({
@@ -31,7 +34,25 @@ const api = new Api({
 
 // section
 const places = new Section((cardData) => {
-  const card = new Card(cardData, "#card-template", { handleCardClick });
+  const card = new Card(cardData, "#card-template", userId, { handleCardClick: () => {
+      const imageName = evt.target.getAttribute("alt");
+      const imageLink = evt.target.getAttribute("src");
+      popupPhotoView.open(imageName, imageLink);
+    }, handleDeleteButton: (cardId) =>  {
+      popupCardDelete.setSubmitAction(() => {
+        api
+          .deleteCard(cardId).then(() => {
+            card.remove();
+        })
+          .catch((e) => {
+            console.log(e);
+          })
+          .finally(() => {
+            popupCardDelete.close();
+          });
+      });
+      popupCardDelete.open();
+    }});
   places.addItem(card.generateCard());
 }, placesGrid);
 
@@ -68,7 +89,25 @@ const popupPlaceAdd = new PopupWithForm({
         link: inputPlaceLink.value,
       })
       .then((data) => {
-        const card = new Card(data, "#card-template", { handleCardClick })
+        const card = new Card(data, "#card-template", userId, { handleCardClick: () => {
+            const imageName = evt.target.getAttribute("alt");
+            const imageLink = evt.target.getAttribute("src");
+            popupPhotoView.open(imageName, imageLink);
+          }, handleDeleteButton: (cardId) =>  {
+            popupCardDelete.setSubmitAction(() => {
+              api
+                .deleteCard(cardId).then(() => {
+                card.remove();
+              })
+                .catch((e) => {
+                  console.log(e);
+                })
+                .finally(() => {
+                  popupCardDelete.close();
+                });
+            });
+            popupCardDelete.open();
+          }});
         places.addItem(card.generateCard(), true);
       })
       .catch((e) => {
@@ -77,17 +116,32 @@ const popupPlaceAdd = new PopupWithForm({
   },
 });
 const popupPhotoView = new PopupWithImage(".popup_type_photo-view");
+const popupCardDelete = new PopupConfirm(popupSelectors.confirm);
 
 // validation
 const profileEditFormValidator = new FormValidator(profileEditForm, validationSettings);
 const placeAddFormValidator = new FormValidator(placeAddForm, validationSettings);
 
 // functions
-function handleCardClick(evt) {
-  const imageName = evt.target.getAttribute("alt");
-  const imageLink = evt.target.getAttribute("src");
-  popupPhotoView.open(imageName, imageLink);
-}
+// function handleCardClick(evt) {
+//   const imageName = evt.target.getAttribute("alt");
+//   const imageLink = evt.target.getAttribute("src");
+//   popupPhotoView.open(imageName, imageLink);
+// }
+//
+// function handleDeleteButton(cardId) {
+//   popupCardDelete.setSubmitAction(() => {
+//     api
+//       .deleteCard(cardId).then()
+//       .catch((e) => {
+//         console.log(e);
+//       })
+//       .finally(() => {
+//         popupCardDelete.close();
+//       });
+//   });
+//   popupCardDelete.open();
+// }
 
 function initProfilePopup() {
   const userData = userInfo.getUserInfo();
@@ -105,6 +159,7 @@ function initPlacePopup() {
 function load() {
   Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then((data) => {
+      userId = data[0]._id;
       places.renderItems(data[1]);
       userInfo.setUserInfo(data[0]);
     })
@@ -118,6 +173,7 @@ load();
 popupProfileEdit.setEventListeners();
 popupPlaceAdd.setEventListeners();
 popupPhotoView.setEventListeners();
+popupCardDelete.setEventListeners();
 
 profileInfoElements.editButton.addEventListener("click", initProfilePopup);
 newCardButton.addEventListener("click", initPlacePopup);

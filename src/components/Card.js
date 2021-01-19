@@ -1,13 +1,19 @@
 export class Card {
-  constructor({  _id, name, link, likes, owner  }, templateSelector, { handleCardClick }) {
+  constructor({  _id, name, link, likes, owner  }, templateSelector, userId, { handleCardClick, handleDeleteButton }) {
+    this._id = _id;
     this._name = name;
     this._link = link;
     this._likes = likes;
+    this._ownerId = owner._id;
+    this._userId = userId;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteButton = handleDeleteButton;
     this._templateSelector = templateSelector;
     this._cardElement = this._getTemplate();
+    this._card = this._cardElement.querySelector(".card")
     this._cardLikeButton = this._cardElement.querySelector(".card__like-button");
     this._cardDeleteButton = this._cardElement.querySelector(".card__delete-button");
+    // todo: rename fields
   }
 
   _getTemplate() {
@@ -17,15 +23,11 @@ export class Card {
   _setEventListeners() {
     this._handleImageClick();
     this._handleLikeButton();
-    this._handleDeleteButton();
+    this._handleDeleteButtonAction();
   }
 
   _likeCard() {
     this._cardLikeButton.classList.toggle("card__like-button_active");
-  }
-
-  _deleteCard() {
-    this._cardDeleteButton.closest(".card").remove();
   }
 
   _handleImageClick() {
@@ -39,15 +41,20 @@ export class Card {
       this._likeCard();
     });
   }
-
-  _handleDeleteButton() {
+  
+  _handleDeleteButtonAction() {
     this._cardDeleteButton.addEventListener("click", () => {
-      this._deleteCard();
+      this._handleDeleteButton(this._id);
     });
   }
   
   _getLikeCount() {
     return this._likes.length;
+  }
+  
+  remove() {
+    console.log(this._cardElement);
+    this._card.remove();
   }
 
   generateCard() {
@@ -60,6 +67,7 @@ export class Card {
     this._cardImage.setAttribute("src", this._link);
     this._cardImage.setAttribute("alt", this._name);
     this._cardLikeCounter.textContent = this._getLikeCount();
+    this._cardDeleteButton.disabled = this._ownerId !== this._userId;
 
     return this._cardElement;
   }
