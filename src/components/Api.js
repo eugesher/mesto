@@ -4,18 +4,17 @@ export class Api {
     this._headers = headers;
   }
   
+  _getData(response) {
+    if (response.ok) return response.json();
+    else return Promise.reject(`Ошибка(Api.getUserInfo): ${response.status}`);
+  }
+  
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, { headers: this._headers }).then((r) => {
-      if (r.ok) return r.json();
-      else return Promise.reject(`Ошибка(Api.getUserInfo): ${r.status}`);
-    });
+    return fetch(`${this._baseUrl}/users/me`, { headers: this._headers }).then(this._getData);
   }
   
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, { headers: this._headers }).then((r) => {
-      if (r.ok) return r.json();
-      else return Promise.reject(`Ошибка(Api.getInitialCards): ${r.status}`);
-    });
+    return fetch(`${this._baseUrl}/cards`, { headers: this._headers }).then(this._getData);
   }
   
   patchUserInfo({ name, about }) {
@@ -23,10 +22,7 @@ export class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ name: name, about: about }),
-    }).then((r) => {
-      if (r.ok) return r.json();
-      else return Promise.reject(`Ошибка(Api.editProfile): ${r.status}`);
-    });
+    }).then(this._getData);
   }
   
   postCard({ name, link }) {
@@ -34,19 +30,13 @@ export class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ name: name, link: link }),
-    }).then((r) => {
-      if (r.ok) return r.json();
-      else return Promise.reject(`Ошибка(Api.postCard): ${r.status}`);
-    });
+    }).then(this._getData);
   }
   
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((r) => {
-      if (r.ok) return r.json();
-      else return Promise.reject(`Ошибка(Api.deleteCard): ${r.status}`);
-    });
+    }).then(this._getData);
   }
 }
