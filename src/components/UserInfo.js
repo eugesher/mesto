@@ -1,15 +1,15 @@
 export default class UserInfo {
-  constructor({ profileNameElement, profileAboutElement, profileAvatarLinkElement}) {
+  constructor({ profileNameElement, profileAboutElement, profileAvatarLinkElement }) {
     this._profileNameElement = profileNameElement;
     this._profileAboutElement = profileAboutElement;
-    this._profileAvatarLinkElement = profileAvatarLinkElement
+    this._profileAvatarLinkElement = profileAvatarLinkElement;
   }
 
   getUserInfo() {
     return {
       name: this._profileNameElement.textContent,
       about: this._profileAboutElement.textContent,
-      avatar: this._profileAvatarLinkElement.src
+      avatar: this._profileAvatarLinkElement.src,
     };
   }
 

@@ -1,5 +1,10 @@
 export default class Card {
-  constructor({ _id, name, link, likes, owner }, templateSelector, userId, { handleCardClick, handleDeleteButton, handleLikeButton }) {
+  constructor(
+    { _id, name, link, likes, owner },
+    templateSelector,
+    userId,
+    { handleCardClick, handleDeleteButton, handleLikeButton }
+  ) {
     this._id = _id;
     this._name = name;
     this._link = link;
@@ -17,65 +22,65 @@ export default class Card {
     this._likeCounter = this._template.querySelector(".card__like-count");
     this._liked = this._isLiked();
   }
-  
+
   _getTemplate() {
     return document.querySelector(this._templateSelector).content.cloneNode(true);
   }
-  
+
   _getLikeCount() {
     return this._likes.length;
   }
-  
+
   _isLiked() {
-    let isLiked = false
+    let isLiked = false;
     this._likes.forEach((likeData) => {
       if (likeData._id === this._userId) {
         isLiked = true;
       }
-    })
+    });
     return isLiked;
   }
-  
+
   _handleCardClickAction() {
     this._cardImage.addEventListener("click", (evt) => {
       this._handleCardClick(evt);
     });
   }
-  
+
   _handleDeleteButtonAction() {
     this._deleteButton.addEventListener("click", () => {
       this._handleDeleteButton(this._id);
     });
   }
-  
+
   _handleLikeButtonAction() {
     this._likeButton.addEventListener("click", () => {
       this._handleLikeButton(this._id, this._liked);
     });
   }
-  
+
   _setEventListeners() {
     this._handleCardClickAction();
     this._handleLikeButtonAction();
     this._handleDeleteButtonAction();
   }
-  
+
   remove() {
     this._element.remove();
   }
-  
+
   like(likeCountData) {
     this._likeButton.classList.add("card__like-button_active");
     this._likeCounter.textContent = likeCountData;
     this._liked = true;
   }
-  
+
   removeLike(likeCountData) {
     this._likeButton.classList.remove("card__like-button_active");
     this._likeCounter.textContent = likeCountData;
     this._liked = false;
   }
-  
+
   generate() {
     this._cardTitle = this._template.querySelector(".card__title");
     this._cardImage = this._template.querySelector(".card__image");
