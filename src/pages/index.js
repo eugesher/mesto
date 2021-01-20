@@ -1,10 +1,7 @@
 import "./index.css";
 import {
-  inputPlaceLink,
-  inputPlaceName,
   inputProfileAbout,
   inputProfileName,
-  inputAvatarLink,
   newCardButton,
   placeAddForm,
   placesGrid,
@@ -49,12 +46,9 @@ const userInfo = new UserInfo({
 // popups
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupSelectors.profileEdit,
-  handleFormSubmit: () => {
+  handleFormSubmit: (inputData) => {
     api
-      .patchUserInfo({
-        name: inputProfileName.value,
-        about: inputProfileAbout.value,
-      })
+      .patchUserInfo(inputData)
       .then((data) => {
         userInfo.setUserInfo(data);
       })
@@ -67,12 +61,9 @@ const popupProfileEdit = new PopupWithForm({
 
 const popupPlaceAdd = new PopupWithForm({
   popupSelector: popupSelectors.placeAdd,
-  handleFormSubmit: () => {
+  handleFormSubmit: (inputData) => {
     api
-      .postCard({
-        name: inputPlaceName.value,
-        link: inputPlaceLink.value,
-      })
+      .postCard(inputData)
       .then((data) => {
         const card = createCard(data);
         places.addItem(card.generate(), true);
@@ -84,10 +75,9 @@ const popupPlaceAdd = new PopupWithForm({
 });
 const popupAvatarUpdate = new PopupWithForm({
   popupSelector: popupSelectors.avatarUpdate,
-  handleFormSubmit: () => {
-    api.patchUserAvatar({
-      avatar: inputAvatarLink.value
-    }).then((data => {
+  handleFormSubmit: (inputData) => {
+    api.patchUserAvatar(inputData)
+      .then((data => {
       userInfo.setUserInfo(data);
     })).catch((e) => {
       console.log(e);
