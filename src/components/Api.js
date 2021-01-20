@@ -57,4 +57,12 @@ export default class Api {
       headers: this._headers
     }).then(this._getData);
   }
+  
+  patchUserAvatar({ avatar }) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ avatar: avatar }),
+    }).then(this._getData)
+  }
 }
