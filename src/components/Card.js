@@ -1,4 +1,4 @@
-export class Card {
+export default class Card {
   constructor({ _id, name, link, likes, owner }, templateSelector, userId, { handleCardClick, handleDeleteButton }) {
     this._id = _id;
     this._name = name;
@@ -13,7 +13,6 @@ export class Card {
     this._element = this._template.querySelector(".card");
     this._likeButton = this._template.querySelector(".card__like-button");
     this._deleteButton = this._template.querySelector(".card__delete-button");
-    // todo: rename fields
   }
 
   _getTemplate() {

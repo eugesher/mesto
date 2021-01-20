@@ -1,4 +1,4 @@
-export class UserInfo {
+export default class UserInfo {
   constructor({ profileNameElement, profileAboutElement }) {
     this._profileNameElement = profileNameElement;
     this._profileAboutElement = profileAboutElement;
