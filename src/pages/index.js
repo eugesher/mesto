@@ -8,7 +8,9 @@ import {
   popupSelectors,
   profileEditForm,
   profileElements,
-  validationSettings, avatarUpdateForm,
+  validationSettings,
+  avatarUpdateForm,
+  submitButtonsText,
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import Section from "../components/Section.js";
@@ -47,6 +49,7 @@ const userInfo = new UserInfo({
 const popupProfileEdit = new PopupWithForm({
   popupSelector: popupSelectors.profileEdit,
   handleFormSubmit: (inputData) => {
+    popupProfileEdit.setButtonText(submitButtonsText.saving);
     api
       .patchUserInfo(inputData)
       .then((data) => {
@@ -55,13 +58,16 @@ const popupProfileEdit = new PopupWithForm({
       .catch((e) => {
         console.log(e);
       })
-      .finally(() => popupProfileEdit.close());
+      .finally(() => {
+        popupProfileEdit.setButtonText(submitButtonsText.profileEdit);
+      });
   },
 });
 
 const popupPlaceAdd = new PopupWithForm({
   popupSelector: popupSelectors.placeAdd,
   handleFormSubmit: (inputData) => {
+    popupPlaceAdd.setButtonText(submitButtonsText.saving);
     api
       .postCard(inputData)
       .then((data) => {
@@ -70,18 +76,25 @@ const popupPlaceAdd = new PopupWithForm({
       })
       .catch((e) => {
         console.log(e);
-      });
+      }).finally(() => {
+      popupProfileEdit.setButtonText(submitButtonsText.placeAdd);
+    });
   },
 });
 const popupAvatarUpdate = new PopupWithForm({
   popupSelector: popupSelectors.avatarUpdate,
   handleFormSubmit: (inputData) => {
+    popupAvatarUpdate.setButtonText(submitButtonsText.saving);
     api.patchUserAvatar(inputData)
       .then((data => {
       userInfo.setUserInfo(data);
-    })).catch((e) => {
+    }))
+      .catch((e) => {
       console.log(e);
-    });
+    })
+      .finally(() => {
+        popupProfileEdit.setButtonText(submitButtonsText.avatarUpdate);
+      });
   }
 })
 
@@ -113,7 +126,7 @@ function createCard(data) {
             console.log(e);
           })
           .finally(() => {
-            popupCardDelete.close();
+            popupCardDelete._close();
           });
       });
       popupCardDelete.open();

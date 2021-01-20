@@ -25,7 +25,6 @@ export const profileElements = {
   avatar: profileElement.querySelector(".profile__avatar")
 };
 
-export const savingMessage = "Сохранение...";
 
 const forms = document.forms;
 export const profileEditForm = forms.profileEdit;
@@ -35,5 +34,12 @@ export const inputProfileAbout = profileEditForm.querySelector(".popup__input_ty
 export const placeAddForm = forms.placeAdd;
 
 export const avatarUpdateForm = forms.avatarUpdate;
+
+export const submitButtonsText = {
+  profileEdit: profileEditForm.querySelector(".popup__submit-button").textContent,
+  placeAdd: placeAddForm.querySelector(".popup__submit-button").textContent,
+  avatarUpdate: avatarUpdateForm.querySelector(".popup__submit-button").textContent,
+  saving: "Сохранение...",
+}
 
 export const newCardButton = document.querySelector(".profile__add-button");
