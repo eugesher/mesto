@@ -12,7 +12,7 @@
       </header>
       <main class="main">
         <section class="profile">
-          <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="аватар профиля" />
+          <img class="profile__avatar" src="#" alt="аватар профиля" />
           <div class="profile__info">
             <h1 class="profile__name"></h1>
             <button type="button" class="profile__edit-button">
@@ -103,15 +103,6 @@
         </div>
       </div>
     </div>
-    <div class="popup popup_type_confirm">
-      <form class="popup__content">
-        <h2 class="popup__title">Вы уверены?</h2>
-        <button type="submit" class="popup__submit-button popup__submit-button_type_confirm">Да</button>
-        <button type="button" class="popup__close-button">
-          <img src="<%=require('./images/cross-button.svg')%>" alt="Закрыть" class="popup__close-button-image" />
-        </button>
-      </form>
-    </div>
     <div class="popup popup_type_avatar-update">
       <form name="avatarUpdate" novalidate class="popup__content">
         <h2 class="popup__title">Обновить аватар</h2>
@@ -120,12 +111,21 @@
             id="avatar-link"
             type="url"
             required
-            class="popup__input popup__input_type_place-link"
+            class="popup__input popup__input_type_avatar-link"
             placeholder="https://somewebsite.com/someimage.jpg"
           />
-          <span class="place-link-error popup__input-error"></span>
+          <span class="avatar-link-error popup__input-error"></span>
         </label>
         <button type="submit" class="popup__submit-button">Сохранить</button>
+        <button type="button" class="popup__close-button">
+          <img src="<%=require('./images/cross-button.svg')%>" alt="Закрыть" class="popup__close-button-image" />
+        </button>
+      </form>
+    </div>
+    <div class="popup popup_type_confirm">
+      <form class="popup__content">
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button type="submit" class="popup__submit-button popup__submit-button_type_confirm">Да</button>
         <button type="button" class="popup__close-button">
           <img src="<%=require('./images/cross-button.svg')%>" alt="Закрыть" class="popup__close-button-image" />
         </button>

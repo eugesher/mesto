@@ -4,13 +4,14 @@ import {
   inputPlaceName,
   inputProfileAbout,
   inputProfileName,
+  inputAvatarLink,
   newCardButton,
   placeAddForm,
   placesGrid,
   popupSelectors,
   profileEditForm,
-  profileInfoElements,
-  validationSettings,
+  profileElements,
+  validationSettings, avatarUpdateForm,
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import Section from "../components/Section.js";
@@ -40,8 +41,9 @@ const places = new Section((data) => {
 
 // user info
 const userInfo = new UserInfo({
-  profileNameElement: profileInfoElements.name,
-  profileAboutElement: profileInfoElements.about,
+  profileNameElement: profileElements.name,
+  profileAboutElement: profileElements.about,
+  profileAvatarLinkElement: profileElements.avatar,
 });
 
 // popups
@@ -80,12 +82,27 @@ const popupPlaceAdd = new PopupWithForm({
       });
   },
 });
+const popupAvatarUpdate = new PopupWithForm({
+  popupSelector: popupSelectors.avatarUpdate,
+  handleFormSubmit: () => {
+    api.patchUserAvatar({
+      avatar: inputAvatarLink.value
+    }).then((data => {
+      userInfo.setUserInfo(data);
+    })).catch((e) => {
+      console.log(e);
+    });
+  }
+})
+
 const popupPhotoView = new PopupWithImage(popupSelectors.photoView);
 const popupCardDelete = new PopupConfirm(popupSelectors.confirm);
 
 // validation
 const profileEditFormValidator = new FormValidator(profileEditForm, validationSettings);
 const placeAddFormValidator = new FormValidator(placeAddForm, validationSettings);
+const avatarUpdateFormValidator = new FormValidator(avatarUpdateForm, validationSettings);
+
 
 // functions
 function createCard(data) {
@@ -139,6 +156,11 @@ function initPlacePopup() {
   popupPlaceAdd.open();
 }
 
+function initAvatarPopup() {
+  avatarUpdateFormValidator.resetValidation();
+  popupAvatarUpdate.open();
+}
+
 function load() {
   Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then((data) => {
@@ -157,9 +179,12 @@ popupProfileEdit.setEventListeners();
 popupPlaceAdd.setEventListeners();
 popupPhotoView.setEventListeners();
 popupCardDelete.setEventListeners();
+popupAvatarUpdate.setEventListeners();
 
-profileInfoElements.editButton.addEventListener("click", initProfilePopup);
+profileElements.editButton.addEventListener("click", initProfilePopup);
+profileElements.avatar.addEventListener("click", initAvatarPopup);
 newCardButton.addEventListener("click", initPlacePopup);
 
 profileEditFormValidator.enableValidation();
 placeAddFormValidator.enableValidation();
+avatarUpdateFormValidator.enableValidation();
