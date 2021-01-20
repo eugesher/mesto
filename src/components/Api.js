@@ -6,7 +6,7 @@ export default class Api {
 
   _getData(response) {
     if (response.ok) return response.json();
-    else return Promise.reject(`Ошибка(Api.getUserInfo): ${response.status}`);
+    else return Promise.reject(`Ошибка: ${response.status}`);
   }
 
   getUserInfo() {
