@@ -3,7 +3,7 @@ export const popupSelectors = {
   placeAdd: ".popup_type_add-place",
   avatarUpdate: ".popup_type_avatar-update",
   photoView: ".popup_type_photo-view",
-  confirm: ".popup_type_confirm"
+  confirm: ".popup_type_confirm",
 };
 
 export const validationSettings = {
@@ -23,9 +23,8 @@ export const profileElements = {
   name: profileElement.querySelector(".profile__name"),
   about: profileElement.querySelector(".profile__about"),
   avatar: profileElement.querySelector(".profile__avatar"),
-  avatarContainer: profileElement.querySelector(".profile__avatar-container")
+  avatarContainer: profileElement.querySelector(".profile__avatar-container"),
 };
-
 
 const forms = document.forms;
 export const profileEditForm = forms.profileEdit;
@@ -41,6 +40,6 @@ export const submitButtonsText = {
   placeAdd: placeAddForm.querySelector(".popup__submit-button").textContent,
   avatarUpdate: avatarUpdateForm.querySelector(".popup__submit-button").textContent,
   saving: "Сохранение...",
-}
+};
 
 export const newCardButton = document.querySelector(".profile__add-button");

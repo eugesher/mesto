@@ -1,8 +1,8 @@
 .profile__avatar-container {
-    position: relative;
-    transition: background-color 250ms ease-in-out;
+  position: relative;
+  transition: background-color 250ms ease-in-out;
 }
 
 .profile__avatar-container:hover {
-    background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
