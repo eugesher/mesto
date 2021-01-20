@@ -113,11 +113,11 @@ function createCard(data) {
     },
     handleLikeButton: (cardId, isLiked) => {
       if (isLiked) {
-        api.cardRemoveLike(cardId).then((data) => {
+        api.deleteCardLike(cardId).then((data) => {
           card.removeLike(data.likes.length);
         })
       } else {
-        api.cardLike(cardId).then((data) => {
+        api.putCardLike(cardId).then((data) => {
           card.like(data.likes.length);
         })
       }
