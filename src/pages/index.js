@@ -35,7 +35,7 @@ const api = new Api({
 // section
 const places = new Section((data) => {
   const card = createCard(data);
-  places.addItem(card.generateCard());
+  places.addItem(card.generate());
 }, placesGrid);
 
 // user info
@@ -73,7 +73,7 @@ const popupPlaceAdd = new PopupWithForm({
       })
       .then((data) => {
         const card = createCard(data);
-        places.addItem(card.generateCard(), true);
+        places.addItem(card.generate(), true);
       })
       .catch((e) => {
         console.log(e);
@@ -111,6 +111,17 @@ function createCard(data) {
       });
       popupCardDelete.open();
     },
+    handleLikeButton: (cardId, isLiked) => {
+      if (isLiked) {
+        api.cardRemoveLike(cardId).then((data) => {
+          card.removeLike(data.likes.length);
+        })
+      } else {
+        api.cardLike(cardId).then((data) => {
+          card.like(data.likes.length);
+        })
+      }
+    }
   });
   return card;
 }
