@@ -22,7 +22,8 @@ export const profileElements = {
   editButton: profileElement.querySelector(".profile__edit-button"),
   name: profileElement.querySelector(".profile__name"),
   about: profileElement.querySelector(".profile__about"),
-  avatar: profileElement.querySelector(".profile__avatar")
+  avatar: profileElement.querySelector(".profile__avatar"),
+  avatarContainer: profileElement.querySelector(".profile__avatar-container")
 };
 
 

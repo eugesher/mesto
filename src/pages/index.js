@@ -186,7 +186,7 @@ popupCardDelete.setEventListeners();
 popupAvatarUpdate.setEventListeners();
 
 profileElements.editButton.addEventListener("click", initProfilePopup);
-profileElements.avatar.addEventListener("click", initAvatarPopup);
+profileElements.avatarContainer.addEventListener("click", initAvatarPopup);
 newCardButton.addEventListener("click", initPlacePopup);
 
 profileEditFormValidator.enableValidation();
