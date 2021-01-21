@@ -15,6 +15,10 @@ export const validationSettings = {
   errorPostfix: "-error",
 };
 
+export const keys = {
+  escape: 'Escape',
+}
+
 export const placesGrid = document.querySelector(".places__grid");
 
 const profileElement = document.querySelector(".profile");
@@ -28,12 +32,11 @@ export const profileElements = {
 
 const forms = document.forms;
 export const profileEditForm = forms.profileEdit;
+export const placeAddForm = forms.placeAdd;
+export const avatarUpdateForm = forms.avatarUpdate;
+
 export const inputProfileName = profileEditForm.querySelector(".popup__input_type_profile-name");
 export const inputProfileAbout = profileEditForm.querySelector(".popup__input_type_profile-about");
-
-export const placeAddForm = forms.placeAdd;
-
-export const avatarUpdateForm = forms.avatarUpdate;
 
 export const submitButtonsText = {
   profileEdit: profileEditForm.querySelector(".popup__submit-button").textContent,
