@@ -8,11 +8,11 @@
 
 Адаптивная вёрстка  
 Flex box  
-Grid layout
+Grid layout  
 
 ### Работа с DOM:
-Class components
-Работа с Api
+Class components  
+Работа с Api  
 
 Факультет веб-разработки Яндекс Практикума.  
 Студент **Евгений Чернышов**.
