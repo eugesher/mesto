@@ -167,10 +167,10 @@ function initAvatarPopup() {
 
 function load() {
   Promise.all([api.getUserInfo(), api.getInitialCards()])
-    .then((data) => {
-      userId = data[0]._id;
-      places.renderItems(data[1]);
-      userInfo.setUserInfo(data[0]);
+    .then(([userData, cardsData]) => {
+      userId = userData._id;
+      userInfo.setUserInfo(userData);
+      places.renderItems(cardsData);
     })
     .catch((e) => {
       console.log(e);
