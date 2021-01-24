@@ -78,7 +78,7 @@ const popupPlaceAdd = new PopupWithForm({
         console.log(e);
       })
       .finally(() => {
-        popupProfileEdit.setButtonText(submitButtonsText.placeAdd);
+        popupPlaceAdd.setButtonText(submitButtonsText.placeAdd);
       });
   },
 });
@@ -95,7 +95,7 @@ const popupAvatarUpdate = new PopupWithForm({
         console.log(e);
       })
       .finally(() => {
-        popupProfileEdit.setButtonText(submitButtonsText.avatarUpdate);
+        popupAvatarUpdate.setButtonText(submitButtonsText.avatarUpdate);
       });
   },
 });
