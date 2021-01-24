@@ -126,9 +126,6 @@ function createCard(data) {
           .catch((e) => {
             console.log(e);
           })
-          .finally(() => {
-            popupCardDelete._close();
-          });
       });
       popupCardDelete.open();
     },
